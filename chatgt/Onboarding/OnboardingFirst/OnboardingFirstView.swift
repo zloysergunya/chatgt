@@ -2,12 +2,13 @@ import SwiftUI
 
 struct OnboardingFirstView: View {
     var animation: Namespace.ID
+    var onContinue: () -> Void
     @State private var contentVisible = false
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Image("imagt.onboarding.background.1")
+                Image("image_onboarding_background_1")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .clipped()
@@ -92,7 +93,7 @@ struct OnboardingFirstView: View {
             
 
             Button(action: {
-                // Handle continue action
+                onContinue()
             }) {
                 Text("Continue")
                     .font(.system(size: 17, weight: .semibold))
@@ -102,7 +103,7 @@ struct OnboardingFirstView: View {
                     .background(Color.blue)
                     .cornerRadius(16)
             }
-            .padding(.horizontal, 24)
+            .padding(.horizontal, 16)
             .padding(.top, 8)
             .opacity(contentVisible ? 1 : 0)
             .offset(y: contentVisible ? 0 : 30)
