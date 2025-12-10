@@ -2,7 +2,7 @@ import SwiftUI
 
 struct OnboardingSecondView: View {
     var onContinue: () -> Void
-    @State private var contentVisible = false
+//    @State private var contentVisible = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -22,11 +22,11 @@ struct OnboardingSecondView: View {
             }
         }
         .ignoresSafeArea()
-        .onAppear {
-            withAnimation(.easeOut(duration: 0.6).delay(0.3)) {
-                contentVisible = true
-            }
-        }
+//        .onAppear {
+//            withAnimation(.easeOut(duration: 0.6).delay(0.3)) {
+//                contentVisible = true
+//            }
+//        }
     }
     
     var toolsView: some View {
@@ -65,8 +65,6 @@ struct OnboardingSecondView: View {
             in: .rect(cornerRadius: 16)
         )
         .padding(.horizontal, 18)
-        .opacity(contentVisible ? 1 : 0)
-        .offset(y: contentVisible ? 0 : 20)
     }
     
     func bottomButtons(geometry: GeometryProxy) -> some View {
@@ -80,8 +78,6 @@ struct OnboardingSecondView: View {
             Text("One AI For All Tasks")
                 .font(.system(size: 28, weight: .bold))
                 .foregroundColor(.white)
-                .opacity(contentVisible ? 1 : 0)
-                .offset(y: contentVisible ? 0 : 30)
             
             HStack(spacing: 8) {
                 CapsuleButton(title: "Text")
@@ -89,14 +85,10 @@ struct OnboardingSecondView: View {
                 CapsuleButton(title: "Images")
                 CapsuleButton(title: "Files")
             }
-            .opacity(contentVisible ? 1 : 0)
-            .offset(y: contentVisible ? 0 : 30)
             
             Text("Seamlessly switch between AI modes and styles")
                 .font(.system(size: 15))
                 .foregroundColor(.gray)
-                .opacity(contentVisible ? 1 : 0)
-                .offset(y: contentVisible ? 0 : 30)
             
             Button(action: {
                 onContinue()
@@ -111,8 +103,6 @@ struct OnboardingSecondView: View {
             }
             .padding(.horizontal, 16)
             .padding(.top, 8)
-            .opacity(contentVisible ? 1 : 0)
-            .offset(y: contentVisible ? 0 : 30)
         }
         .padding(.bottom, geometry.safeAreaInsets.bottom + 84)
     }
@@ -121,4 +111,3 @@ struct OnboardingSecondView: View {
 #Preview {
     OnboardingSecondView(onContinue: {})
 }
-

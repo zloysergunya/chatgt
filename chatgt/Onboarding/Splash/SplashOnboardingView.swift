@@ -22,12 +22,18 @@ struct SplashOnboardingView: View {
                         currentStep = .second
                     }
                 })
-                .transition(.opacity)
+                .transition(.asymmetric(
+                    insertion: .opacity,
+                    removal: .move(edge: .leading)
+                ))
             case .second:
                 OnboardingSecondView(onContinue: {
                     // Handle final continue action
                 })
-                .transition(.opacity)
+                .transition(.asymmetric(
+                    insertion: .move(edge: .trailing),
+                    removal: .move(edge: .leading)
+                ))
             }
         }
         .onAppear {
