@@ -2,7 +2,6 @@ import SwiftUI
 
 struct OnboardingSecondView: View {
     var onContinue: () -> Void
-//    @State private var contentVisible = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -22,11 +21,6 @@ struct OnboardingSecondView: View {
             }
         }
         .ignoresSafeArea()
-//        .onAppear {
-//            withAnimation(.easeOut(duration: 0.6).delay(0.3)) {
-//                contentVisible = true
-//            }
-//        }
     }
     
     var toolsView: some View {
