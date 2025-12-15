@@ -5,10 +5,12 @@ enum OnboardingStep {
     case first
     case second
     case third
+    case paywall
 }
 
 struct SplashOnboardingView: View {
     @State private var currentStep: OnboardingStep = .splash
+    @State private var showPaywall: Bool = false
     @Namespace private var animation
     
     var body: some View {
@@ -41,12 +43,26 @@ struct SplashOnboardingView: View {
             case .third:
                 OnboardingThirdView(onContinue: {
                     withAnimation(.easeInOut(duration: 0.5)) {
-                        
+                        currentStep = .paywall
                     }
                 })
                 .transition(.asymmetric(
                     insertion: .move(edge: .trailing),
                     removal: .move(edge: .leading)
+                ))
+                
+            case .paywall:
+                PaywallView(
+                    onDismiss: {
+                        // Handle dismiss - navigate to main app
+                    },
+                    onPurchaseSuccess: {
+                        // Handle successful purchase - navigate to main app
+                    }
+                )
+                .transition(.asymmetric(
+                    insertion: .move(edge: .trailing),
+                    removal: .opacity
                 ))
             }
         }
