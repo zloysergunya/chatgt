@@ -70,7 +70,7 @@ struct OnboardingSecondView: View {
                 .frame(height: centerY + offset + 76)
             
             Text("One AI For All Tasks")
-                .font(.system(size: 28, weight: .bold))
+                .font(.system(size: 28, weight: .semibold))
                 .foregroundColor(.white)
             
             HStack(spacing: 8) {
@@ -81,8 +81,8 @@ struct OnboardingSecondView: View {
             }
             
             Text("Seamlessly switch between AI modes and styles")
-                .font(.system(size: 15))
-                .foregroundColor(.gray)
+                .font(.system(size: 13))
+                .foregroundColor(Color(hex: 0x707579))
             
             Button(action: {
                 onContinue()

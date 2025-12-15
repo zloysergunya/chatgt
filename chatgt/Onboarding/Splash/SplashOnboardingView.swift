@@ -4,6 +4,7 @@ enum OnboardingStep {
     case splash
     case first
     case second
+    case third
 }
 
 struct SplashOnboardingView: View {
@@ -28,7 +29,20 @@ struct SplashOnboardingView: View {
                 ))
             case .second:
                 OnboardingSecondView(onContinue: {
-                    // Handle final continue action
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        currentStep = .third
+                    }
+                })
+                .transition(.asymmetric(
+                    insertion: .move(edge: .trailing),
+                    removal: .move(edge: .leading)
+                ))
+                
+            case .third:
+                OnboardingThirdView(onContinue: {
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        
+                    }
                 })
                 .transition(.asymmetric(
                     insertion: .move(edge: .trailing),
