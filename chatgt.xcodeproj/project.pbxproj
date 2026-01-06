@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D14C746A2F0D245500AC062F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14C74692F0D245500AC062F /* StoreKit.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		D1287F072EE5F9230092ABBA /* chatgt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatgt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D14C74692F0D245500AC062F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D14C746A2F0D245500AC062F /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +39,7 @@
 			isa = PBXGroup;
 			children = (
 				D1287F092EE5F9230092ABBA /* chatgt */,
+				D14C74682F0D245500AC062F /* Frameworks */,
 				D1287F082EE5F9230092ABBA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +50,14 @@
 				D1287F072EE5F9230092ABBA /* chatgt.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D14C74682F0D245500AC062F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D14C74692F0D245500AC062F /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,7 +268,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5Z5J3N9AXZ;
+				DEVELOPMENT_TEAM = NTTPD2JJJL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Chat GT";
@@ -267,7 +282,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kotov.chatgt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chatgt.ai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -286,7 +301,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5Z5J3N9AXZ;
+				DEVELOPMENT_TEAM = NTTPD2JJJL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Chat GT";
@@ -300,7 +315,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kotov.chatgt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chatgt.ai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
