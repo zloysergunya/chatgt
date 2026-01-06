@@ -3,8 +3,8 @@ import StoreKit
 import Combine
 
 enum SubscriptionID: String, CaseIterable {
-    case weekly = "com.chatgt.subscription.weekly"
-    case yearly = "com.chatgt.subscription.yearly"
+    case weekly = "com.chatgt.ai.subscription.weekly"
+    case yearly = "com.chatgt.ai.subscription.yearly"
     
     static var allIDs: [String] {
         allCases.map { $0.rawValue }
