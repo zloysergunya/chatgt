@@ -38,11 +38,7 @@ final class NetworkManager {
         var plugins: [PluginType] = []
         
         #if DEBUG
-        // Add logging plugin for debug builds
-        let loggerPlugin = NetworkLoggerPlugin(configuration: .init(
-            logOptions: [.requestMethod, .requestHeaders, .requestBody, .successResponseBody, .errorResponseBody]
-        ))
-        plugins.append(loggerPlugin)
+        plugins.append(CurlLoggerPlugin())
         #endif
         
         return MoyaProvider<T>(
