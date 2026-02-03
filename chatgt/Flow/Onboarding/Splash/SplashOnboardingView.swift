@@ -6,6 +6,7 @@ enum OnboardingStep {
     case second
     case third
     case paywall
+    case signIn
 }
 
 struct SplashOnboardingView: View {
@@ -54,12 +55,25 @@ struct SplashOnboardingView: View {
             case .paywall:
                 PaywallView(
                     onDismiss: {
-                        // Handle dismiss - navigate to main app
+                        currentStep = .signIn
                     },
                     onPurchaseSuccess: {
                         // Handle successful purchase - navigate to main app
                     }
                 )
+                .transition(.asymmetric(
+                    insertion: .move(edge: .trailing),
+                    removal: .opacity
+                ))
+                
+            case .signIn:
+                SignInView {
+                    // Handle dismiss
+                } onSignInSuccess: { authResult in
+                    // Handle sing in success
+                } onSignUpTapped: {
+                    // Handle sing up
+                }
                 .transition(.asymmetric(
                     insertion: .move(edge: .trailing),
                     removal: .opacity
@@ -79,4 +93,3 @@ struct SplashOnboardingView: View {
 #Preview {
     SplashOnboardingView()
 }
-

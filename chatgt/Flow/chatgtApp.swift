@@ -1,17 +1,14 @@
-//
-//  chatgtApp.swift
-//  chatgt
-//
-//  Created by Sergey Kotov on 07.12.2025.
-//
-
 import SwiftUI
+import GoogleSignIn
 
 @main
 struct chatgtApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onOpenURL { url in
+                    GIDSignIn.sharedInstance.handle(url)
+                }
         }
     }
 }

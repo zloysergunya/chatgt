@@ -16,31 +16,6 @@ struct PaywallView: View {
                     .aspectRatio(contentMode: .fill)
                     .ignoresSafeArea()
                 
-                VStack {
-                    HStack {
-                        Button {
-                            onDismiss?()
-                            dismiss()
-                        } label: {
-                            Image(systemName: "xmark")
-                                .font(.system(size: 16, weight: .medium))
-                                .foregroundColor(.white)
-                                .frame(width: 32, height: 32)
-                                .background(Color.white.opacity(0.2))
-                                .clipShape(Circle())
-                        }
-                        Spacer()
-                    }
-                    
-                    Spacer()
-                    
-                    footerSection
-                        .padding(.top, 20)
-                        .padding(.bottom, geometry.safeAreaInsets.bottom + 36)
-                }
-                .padding(.top, 54)
-                .padding(.leading, 20)
-                
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 0) {
                         headerSection
@@ -68,6 +43,31 @@ struct PaywallView: View {
                     }
                     .padding(.horizontal, 24)
                 }
+                
+                VStack {
+                    HStack {
+                        Button {
+                            onDismiss?()
+                            dismiss()
+                        } label: {
+                            Image(systemName: "xmark")
+                                .font(.system(size: 16, weight: .medium))
+                                .foregroundColor(.white)
+                                .frame(width: 32, height: 32)
+                                .background(Color.white.opacity(0.2))
+                                .clipShape(Circle())
+                        }
+                        Spacer()
+                    }
+                    
+                    Spacer()
+                    
+                    footerSection
+                        .padding(.top, 20)
+                        .padding(.bottom, geometry.safeAreaInsets.bottom + 36)
+                }
+                .padding(.top, 54)
+                .padding(.leading, 20)
             }
         }
         .ignoresSafeArea()

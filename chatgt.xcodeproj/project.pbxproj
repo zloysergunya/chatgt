@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D14C746A2F0D245500AC062F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14C74692F0D245500AC062F /* StoreKit.framework */; };
+		D18DCCD22F239FD800D8F9CA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = D18DCCD12F239FD800D8F9CA /* GoogleSignIn */; };
+		D18DCCD42F239FD800D8F9CA /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D18DCCD32F239FD800D8F9CA /* GoogleSignInSwift */; };
+		D18DCCDD2F23A0F700D8F9CA /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = D18DCCDC2F23A0F700D8F9CA /* Moya */; };
+		D18DCCE02F23A12C00D8F9CA /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = D18DCCDF2F23A12C00D8F9CA /* KeychainAccess */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -15,9 +19,22 @@
 		D14C74692F0D245500AC062F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D18DCCD52F23A07000D8F9CA /* Exceptions for "chatgt" folder in "chatgt" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D1287F062EE5F9230092ABBA /* chatgt */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D1287F092EE5F9230092ABBA /* chatgt */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D18DCCD52F23A07000D8F9CA /* Exceptions for "chatgt" folder in "chatgt" target */,
+			);
 			path = chatgt;
 			sourceTree = "<group>";
 		};
@@ -28,7 +45,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D18DCCD42F239FD800D8F9CA /* GoogleSignInSwift in Frameworks */,
+				D18DCCE02F23A12C00D8F9CA /* KeychainAccess in Frameworks */,
+				D18DCCDD2F23A0F700D8F9CA /* Moya in Frameworks */,
 				D14C746A2F0D245500AC062F /* StoreKit.framework in Frameworks */,
+				D18DCCD22F239FD800D8F9CA /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +101,10 @@
 			);
 			name = chatgt;
 			packageProductDependencies = (
+				D18DCCD12F239FD800D8F9CA /* GoogleSignIn */,
+				D18DCCD32F239FD800D8F9CA /* GoogleSignInSwift */,
+				D18DCCDC2F23A0F700D8F9CA /* Moya */,
+				D18DCCDF2F23A12C00D8F9CA /* KeychainAccess */,
 			);
 			productName = chatgt;
 			productReference = D1287F072EE5F9230092ABBA /* chatgt.app */;
@@ -109,6 +134,11 @@
 			);
 			mainGroup = D1287EFE2EE5F9230092ABBA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				D18DCCD02F239FD800D8F9CA /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				D18DCCDB2F23A0F700D8F9CA /* XCRemoteSwiftPackageReference "Moya" */,
+				D18DCCDE2F23A12C00D8F9CA /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D1287F082EE5F9230092ABBA /* Products */;
 			projectDirPath = "";
@@ -266,11 +296,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = chatgt/chatgt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NTTPD2JJJL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = chatgt/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Chat GT";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -299,11 +331,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = chatgt/chatgt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NTTPD2JJJL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = chatgt/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Chat GT";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -349,6 +383,56 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D18DCCD02F239FD800D8F9CA /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+		D18DCCDB2F23A0F700D8F9CA /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+		D18DCCDE2F23A12C00D8F9CA /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D18DCCD12F239FD800D8F9CA /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D18DCCD02F239FD800D8F9CA /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		D18DCCD32F239FD800D8F9CA /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D18DCCD02F239FD800D8F9CA /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		D18DCCDC2F23A0F700D8F9CA /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D18DCCDB2F23A0F700D8F9CA /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		D18DCCDF2F23A12C00D8F9CA /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D18DCCDE2F23A12C00D8F9CA /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D1287EFF2EE5F9230092ABBA /* Project object */;
 }
