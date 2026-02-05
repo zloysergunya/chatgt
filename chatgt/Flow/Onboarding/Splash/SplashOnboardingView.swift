@@ -11,9 +11,10 @@ enum OnboardingStep {
 
 struct SplashOnboardingView: View {
     @State private var currentStep: OnboardingStep = .splash
-    @State private var showPaywall: Bool = false
     @Namespace private var animation
-    
+
+    var onFlowCompleted: (() -> Void)?
+
     var body: some View {
         ZStack {
             switch currentStep {
@@ -40,7 +41,7 @@ struct SplashOnboardingView: View {
                     insertion: .move(edge: .trailing),
                     removal: .move(edge: .leading)
                 ))
-                
+
             case .third:
                 OnboardingThirdView(onContinue: {
                     withAnimation(.easeInOut(duration: 0.5)) {
@@ -51,28 +52,30 @@ struct SplashOnboardingView: View {
                     insertion: .move(edge: .trailing),
                     removal: .move(edge: .leading)
                 ))
-                
+
             case .paywall:
                 PaywallView(
                     onDismiss: {
-                        
+                        onFlowCompleted?()
                     },
                     onPurchaseSuccess: {
-                        // Handle successful purchase - navigate to main app
+                        onFlowCompleted?()
                     }
                 )
                 .transition(.asymmetric(
                     insertion: .move(edge: .trailing),
                     removal: .opacity
                 ))
-                
+
             case .signIn:
                 SignInView {
                     // Handle dismiss
-                } onSignInSuccess: { authResult in
-                    currentStep = .paywall
+                } onSignInSuccess: { _ in
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        currentStep = .paywall
+                    }
                 } onSignUpTapped: {
-                    // Handle sing up
+                    // Handle sign up
                 }
                 .transition(.asymmetric(
                     insertion: .move(edge: .trailing),

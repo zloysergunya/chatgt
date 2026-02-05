@@ -82,12 +82,11 @@ struct SignInView: View {
             
             // PRO badge
             Text("PRO")
-                .font(.system(size: 14, weight: .semibold))
+                .font(.system(size: 16, weight: .bold))
                 .foregroundColor(.white)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 6)
-                .background(Color(hex: 0x2F68FF))
-                .cornerRadius(6)
+                .padding(6)
+                .background(Color(hex: 0x24BF80))
+                .cornerRadius(8)
         }
         .padding(.horizontal, 20)
     }
