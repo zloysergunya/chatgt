@@ -9,6 +9,7 @@ struct ContentView: View {
     @State private var currentFlow: AppFlow = .onboarding
 
     private let tokenStorage = TokenStorage.shared
+    private let onboardingDataStore = OnboardingDataStore()
 
     var body: some View {
         ZStack {
@@ -22,12 +23,16 @@ struct ContentView: View {
                 .transition(.opacity)
 
             case .main:
-                ChatView()
-                    .transition(.opacity)
+                ChatView(onLogout: {
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        currentFlow = .onboarding
+                    }
+                })
+                .transition(.opacity)
             }
         }
         .onAppear {
-            if tokenStorage.isAuthenticated {
+            if tokenStorage.isAuthenticated || onboardingDataStore.hasCompletedOnboarding {
                 currentFlow = .main
             }
         }

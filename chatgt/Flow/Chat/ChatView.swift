@@ -7,6 +7,8 @@ struct ChatView: View {
     @State private var showAllModels: Bool = false
     @State private var selectedModel: AIModel?
 
+    var onLogout: (() -> Void)?
+
     private let aiModels: [AIModel] = [
         AIModel(id: "gpt-5", name: "GPT-5", provider: "OpenAI", iconName: "icon_openai", isNew: true),
         AIModel(id: "perplexity", name: "Perplexity", provider: "Perplexity", iconName: "icon_perplexity", isNew: true),
@@ -45,7 +47,7 @@ struct ChatView: View {
             }
         }
         .fullScreenCover(isPresented: $showSettings) {
-            SettingsView()
+            SettingsView(onLogout: onLogout)
         }
         .fullScreenCover(isPresented: $showPaywall) {
             PaywallView(

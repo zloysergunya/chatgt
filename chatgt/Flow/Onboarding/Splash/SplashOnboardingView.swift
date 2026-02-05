@@ -13,6 +13,8 @@ struct SplashOnboardingView: View {
     @State private var currentStep: OnboardingStep = .splash
     @Namespace private var animation
 
+    private let onboardingDataStore = OnboardingDataStore()
+
     var onFlowCompleted: (() -> Void)?
 
     var body: some View {
@@ -56,9 +58,11 @@ struct SplashOnboardingView: View {
             case .paywall:
                 PaywallView(
                     onDismiss: {
+                        onboardingDataStore.hasCompletedOnboarding = true
                         onFlowCompleted?()
                     },
                     onPurchaseSuccess: {
+                        onboardingDataStore.hasCompletedOnboarding = true
                         onFlowCompleted?()
                     }
                 )
@@ -69,7 +73,9 @@ struct SplashOnboardingView: View {
 
             case .signIn:
                 SignInView {
-                    // Handle dismiss
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        currentStep = .paywall
+                    }
                 } onSignInSuccess: { _ in
                     withAnimation(.easeInOut(duration: 0.5)) {
                         currentStep = .paywall

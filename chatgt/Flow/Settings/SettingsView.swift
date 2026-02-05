@@ -7,11 +7,17 @@ struct SettingsView: View {
     @State private var showSignIn: Bool = false
     @State private var showPaywall: Bool = false
 
+    private let tokenStorage = TokenStorage.shared
+    private let profileDataStore = ProfileDataStore()
+    private let onboardingDataStore = OnboardingDataStore()
+
     private let privacyPolicyURL = "https://example.com/privacy"
     private let termsOfUseURL = "https://example.com/terms"
     private let supportEmail = "support@chatgt.ai"
     private let appStoreURL = "https://apps.apple.com/app/idXXXXXXXXXX"
     private let shareText = "Check out Chat GT - AI Assistant"
+
+    var onLogout: (() -> Void)?
 
     var body: some View {
         ZStack {
@@ -24,10 +30,12 @@ struct SettingsView: View {
 
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 6) {
-                        SettingsRow(icon: "person.circle", title: "Log In") {
-                            handleLogIn()
+                        if !tokenStorage.isAuthenticated {
+                            SettingsRow(icon: "person.circle", title: "Log In") {
+                                handleLogIn()
+                            }
                         }
-
+                        
                         SettingsRow(icon: "clock.arrow.circlepath", title: "History") {
                             handleHistory()
                         }
@@ -55,6 +63,12 @@ struct SettingsView: View {
                         SettingsRow(icon: "doc.text", title: "Term of Use") {
                             handleTermsOfUse()
                         }
+                        
+                        if tokenStorage.isAuthenticated {
+                            SettingsRow(icon: "rectangle.portrait.and.arrow.right", title: "Log Out") {
+                                handleLogout()
+                            }
+                        }
                     }
                     .padding(.horizontal, 20)
                     .padding(.top, 30)
@@ -75,6 +89,8 @@ struct SettingsView: View {
             )
         }
     }
+
+    // MARK: - Header
 
     private var headerSection: some View {
         HStack {
@@ -103,8 +119,18 @@ struct SettingsView: View {
         }
     }
 
+    // MARK: - Actions
+
     private func handleLogIn() {
         showSignIn = true
+    }
+
+    private func handleLogout() {
+        try? tokenStorage.clearAll()
+        profileDataStore.profile = nil
+        onboardingDataStore.hasCompletedOnboarding = false
+        dismiss()
+        onLogout?()
     }
 
     private func handleHistory() {
