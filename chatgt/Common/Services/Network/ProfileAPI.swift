@@ -6,6 +6,8 @@ import Alamofire
 enum ProfileAPI {
     /// Authenticate user with JWT token from Apple/Google
     case authenticate(token: String)
+    /// Get current user profile
+    case getMe(token: String)
 }
 
 // MARK: - TargetType
@@ -20,6 +22,8 @@ extension ProfileAPI: TargetType {
         switch self {
         case .authenticate:
             return "/api/protected/v1/profile"
+        case .getMe:
+            return "/api/protected/v1/profile/me"
         }
     }
     
@@ -27,19 +31,21 @@ extension ProfileAPI: TargetType {
         switch self {
         case .authenticate:
             return .post
+        case .getMe:
+            return .get
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .authenticate:
+        case .authenticate, .getMe:
             return .requestPlain
         }
     }
     
     var headers: [String: String]? {
         switch self {
-        case .authenticate(let token):
+        case .authenticate(let token), .getMe(let token):
             return [
                 "Authorization": "Bearer \(token)",
                 "Content-Type": "application/json"

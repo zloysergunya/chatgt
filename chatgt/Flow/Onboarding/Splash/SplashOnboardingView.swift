@@ -44,7 +44,7 @@ struct SplashOnboardingView: View {
             case .third:
                 OnboardingThirdView(onContinue: {
                     withAnimation(.easeInOut(duration: 0.5)) {
-                        currentStep = .paywall
+                        currentStep = .signIn
                     }
                 })
                 .transition(.asymmetric(
@@ -55,7 +55,7 @@ struct SplashOnboardingView: View {
             case .paywall:
                 PaywallView(
                     onDismiss: {
-                        currentStep = .signIn
+                        
                     },
                     onPurchaseSuccess: {
                         // Handle successful purchase - navigate to main app
@@ -70,7 +70,7 @@ struct SplashOnboardingView: View {
                 SignInView {
                     // Handle dismiss
                 } onSignInSuccess: { authResult in
-                    // Handle sing in success
+                    currentStep = .paywall
                 } onSignUpTapped: {
                     // Handle sing up
                 }

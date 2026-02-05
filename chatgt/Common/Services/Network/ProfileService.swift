@@ -18,7 +18,7 @@ final class ProfileService {
         self.provider = provider
     }
     
-    // MARK: - Public Methods
+    // MARK: - Methods
     
     /// Authenticate user with JWT token from Apple/Google
     /// - Parameter token: JWT token received from Apple or Google Sign-In
@@ -41,7 +41,45 @@ final class ProfileService {
                             message: message
                         ))
                     }
-                    
+
+                case .failure(let error):
+                    switch error {
+                    case .underlying(let underlyingError, _):
+                        continuation.resume(throwing: APIError.networkError(underlyingError))
+                    default:
+                        continuation.resume(throwing: APIError.networkError(error))
+                    }
+                }
+            }
+        }
+    }
+
+    /// Fetch current user profile
+    /// - Parameter token: JWT token for authorization
+    /// - Returns: User profile
+    /// - Throws: `APIError` if request fails
+    func fetchProfile(token: String) async throws -> Profile {
+        return try await withCheckedThrowingContinuation { continuation in
+            provider.request(.getMe(token: token)) { result in
+                switch result {
+                case .success(let response):
+                    if response.statusCode == 200 {
+                        do {
+                            let profile = try JSONDecoder().decode(Profile.self, from: response.data)
+                            continuation.resume(returning: profile)
+                        } catch {
+                            continuation.resume(throwing: APIError.decodingError(error))
+                        }
+                    } else if response.statusCode == 401 {
+                        continuation.resume(throwing: APIError.unauthorized)
+                    } else {
+                        let message = String(data: response.data, encoding: .utf8)
+                        continuation.resume(throwing: APIError.serverError(
+                            statusCode: response.statusCode,
+                            message: message
+                        ))
+                    }
+
                 case .failure(let error):
                     switch error {
                     case .underlying(let underlyingError, _):
