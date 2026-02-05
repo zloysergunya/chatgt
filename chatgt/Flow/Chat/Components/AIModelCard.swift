@@ -1,11 +1,21 @@
 import SwiftUI
 
-struct AIModel: Identifiable, Equatable {
+struct AIModel: Identifiable, Equatable, Codable {
     let id: String
     let name: String
     let provider: String
     let iconName: String
+    let iconURL: String?
     let isNew: Bool
+
+    init(id: String, name: String, provider: String, iconName: String, iconURL: String? = nil, isNew: Bool) {
+        self.id = id
+        self.name = name
+        self.provider = provider
+        self.iconName = iconName
+        self.iconURL = iconURL
+        self.isNew = isNew
+    }
 }
 
 struct AIModelCard: View {

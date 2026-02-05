@@ -4,6 +4,8 @@ struct ChatView: View {
     @State private var inputText: String = ""
     @State private var showSettings: Bool = false
     @State private var showPaywall: Bool = false
+    @State private var showAllModels: Bool = false
+    @State private var selectedModel: AIModel?
 
     private let aiModels: [AIModel] = [
         AIModel(id: "gpt-5", name: "GPT-5", provider: "OpenAI", iconName: "icon_openai", isNew: true),
@@ -51,6 +53,12 @@ struct ChatView: View {
                 onPurchaseSuccess: { showPaywall = false }
             )
         }
+        .fullScreenCover(isPresented: $showAllModels) {
+            AllModelsView { model in
+                selectedModel = model
+                // TODO: Handle model selection
+            }
+        }
     }
 
     private var headerSection: some View {
@@ -88,7 +96,7 @@ struct ChatView: View {
 
     private var aiModelsSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            sectionHeader(title: "AI models", action: {})
+            sectionHeader(title: "AI models", action: { showAllModels = true })
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
