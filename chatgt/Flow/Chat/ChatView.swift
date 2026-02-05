@@ -3,6 +3,7 @@ import SwiftUI
 struct ChatView: View {
     @State private var inputText: String = ""
     @State private var showSettings: Bool = false
+    @State private var showPaywall: Bool = false
 
     private let aiModels: [AIModel] = [
         AIModel(id: "gpt-5", name: "GPT-5", provider: "OpenAI", iconName: "icon_openai", isNew: true),
@@ -41,6 +42,15 @@ struct ChatView: View {
                 )
             }
         }
+        .fullScreenCover(isPresented: $showSettings) {
+            SettingsView()
+        }
+        .fullScreenCover(isPresented: $showPaywall) {
+            PaywallView(
+                onDismiss: { showPaywall = false },
+                onPurchaseSuccess: { showPaywall = false }
+            )
+        }
     }
 
     private var headerSection: some View {
@@ -52,7 +62,9 @@ struct ChatView: View {
             Spacer()
 
             HStack(spacing: 12) {
-                proButton
+                ProButton {
+                    showPaywall = true
+                }
 
                 Button(action: {
                     showSettings = true
@@ -72,18 +84,7 @@ struct ChatView: View {
         }
     }
 
-    private var proButton: some View {
-        Button(action: {
-            // TODO: Open paywall
-        }) {
-            Text("PRO")
-                .font(.system(size: 16, weight: .bold))
-                .foregroundColor(.white)
-                .padding(6)
-                .background(Color(hex: 0x24BF80))
-                .cornerRadius(8)
-        }
-    }
+    // MARK: - AI Models Section
 
     private var aiModelsSection: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -100,6 +101,8 @@ struct ChatView: View {
         }
     }
 
+    // MARK: - History Section
+
     private var historySection: some View {
         VStack(alignment: .leading, spacing: 12) {
             sectionHeader(title: "History", action: {})
@@ -114,6 +117,8 @@ struct ChatView: View {
             }
         }
     }
+
+    // MARK: - Section Header
 
     private func sectionHeader(title: String, action: @escaping () -> Void) -> some View {
         HStack {
