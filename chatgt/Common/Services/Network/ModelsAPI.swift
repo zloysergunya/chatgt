@@ -2,54 +2,46 @@ import Foundation
 import Moya
 import Alamofire
 
-enum ProfileAPI {
-    case authenticate(token: String)
-    case getMe(token: String)
+enum ModelsAPI {
+    case getModels(token: String)
 }
 
-// MARK: - TargetType
-
-extension ProfileAPI: TargetType {
-    
+extension ModelsAPI: TargetType {
     var baseURL: URL {
         URL(string: "https://chat-gt.pro")!
     }
-    
+
     var path: String {
         switch self {
-        case .authenticate:
-            return "/api/protected/v1/profile"
-        case .getMe:
-            return "/api/protected/v1/profile/me"
+        case .getModels:
+            return "/api/public/v1/models"
         }
     }
-    
+
     var method: Moya.Method {
         switch self {
-        case .authenticate:
-            return .post
-        case .getMe:
+        case .getModels:
             return .get
         }
     }
-    
+
     var task: Moya.Task {
         switch self {
-        case .authenticate, .getMe:
+        case .getModels:
             return .requestPlain
         }
     }
-    
+
     var headers: [String: String]? {
         switch self {
-        case .authenticate(let token), .getMe(let token):
+        case .getModels(let token):
             return [
                 "Authorization": "Bearer \(token)",
                 "Content-Type": "application/json"
             ]
         }
     }
-    
+
     var validationType: ValidationType {
         return .successAndRedirectCodes
     }

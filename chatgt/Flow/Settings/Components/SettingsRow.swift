@@ -13,7 +13,7 @@ struct SettingsRow: View {
                     .foregroundColor(.white)
                     .frame(width: 32, height: 32)
                     .glassEffect(
-                        .regular.tint(.white.opacity(0.2)),
+                        .clear.tint(.white.opacity(0.2)),
                         in: .rect(cornerRadius: 16)
                     )
 
@@ -31,7 +31,7 @@ struct SettingsRow: View {
             .padding(.vertical, 12)
             .background(Color(hex: 0x0D1526).opacity(0.2))
             .glassEffect(
-                .regular.interactive().tint(Color(hex: 0x0D1526).opacity(0.2)),
+                .clear.interactive().tint(Color(hex: 0x0D1526).opacity(0.2)),
                 in: .rect(cornerRadius: 16)
             )
         }

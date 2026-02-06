@@ -6,14 +6,11 @@ struct ChatView: View {
     @State private var showPaywall: Bool = false
     @State private var showAllModels: Bool = false
     @State private var selectedModel: AIModel?
+    @State private var aiModels: [AIModel] = []
 
     var onLogout: (() -> Void)?
 
-    private let aiModels: [AIModel] = [
-        AIModel(id: "gpt-5", name: "GPT-5", provider: "OpenAI", iconName: "icon_openai", isNew: true),
-        AIModel(id: "perplexity", name: "Perplexity", provider: "Perplexity", iconName: "icon_perplexity", isNew: true),
-        AIModel(id: "leonardo", name: "Leonardo", provider: "Leonardo", iconName: "icon_leonardo", isNew: false)
-    ]
+    private let modelsDataStore = ModelsDataStore.shared
 
     private let chatHistory: [ChatHistory] = [
         ChatHistory(id: "1", title: "Chat N1", subtitle: "See you recent convercation"),
@@ -28,15 +25,18 @@ struct ChatView: View {
                 headerSection
                     .padding(.horizontal, 16)
                     .padding(.top, 8)
-
+                
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 24) {
-                        aiModelsSection
+                        if !aiModels.isEmpty {
+                            aiModelsSection
+                        }
+                        
                         historySection
                     }
                     .padding(.top, 24)
                 }
-
+                
                 Spacer()
 
                 ChatInputBar(
@@ -45,6 +45,9 @@ struct ChatView: View {
                     onSendTapped: handleSend
                 )
             }
+        }
+        .task {
+            await loadModelsIfNeeded()
         }
         .fullScreenCover(isPresented: $showSettings) {
             SettingsView(onLogout: onLogout)
@@ -94,8 +97,6 @@ struct ChatView: View {
         }
     }
 
-    // MARK: - AI Models Section
-
     private var aiModelsSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             sectionHeader(title: "AI models", action: { showAllModels = true })
@@ -103,7 +104,9 @@ struct ChatView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
                     ForEach(aiModels) { model in
-                        AIModelCard(model: model)
+                        AIModelGridCard(model: model) {
+                            // TODO: Update selected model
+                        }
                     }
                 }
                 .padding(.horizontal, 16)
@@ -157,6 +160,21 @@ struct ChatView: View {
         guard !inputText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
         // TODO: Send message
         inputText = ""
+    }
+
+    private func loadModelsIfNeeded() async {
+        if !modelsDataStore.models.isEmpty {
+            aiModels = modelsDataStore.models
+            return
+        }
+
+        do {
+            let fetchedModels = try await ModelsService.shared.fetchModels()
+            modelsDataStore.models = fetchedModels
+            aiModels = fetchedModels
+        } catch {
+            // Handle error silently or use fallback
+        }
     }
 }
 

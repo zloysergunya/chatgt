@@ -100,7 +100,7 @@ struct SettingsView: View {
                     .foregroundColor(.white)
                     .frame(width: 32, height: 32)
                     .glassEffect(
-                        .regular.interactive().tint(.white.opacity(0.2)),
+                        .clear.interactive().tint(.white.opacity(0.2)),
                         in: .circle
                     )
             }
