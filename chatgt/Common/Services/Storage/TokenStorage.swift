@@ -14,6 +14,8 @@ final class TokenStorage {
         static let accessToken = "com.chatgt.accessToken"
         static let refreshToken = "com.chatgt.refreshToken"
         static let userIdentifier = "com.chatgt.userIdentifier"
+        static let authProvider = "com.chatgt.authProvider"
+        static let tokenExpirationDate = "com.chatgt.tokenExpirationDate"
     }
     
     // MARK: - Private Properties
@@ -78,15 +80,57 @@ final class TokenStorage {
         try keychain.remove(Keys.userIdentifier)
     }
     
+    // MARK: - Auth Provider
+
+    /// Save the auth provider used for sign-in
+    func saveAuthProvider(_ provider: AuthProvider) throws {
+        try keychain.set(provider.rawValue, key: Keys.authProvider)
+    }
+
+    /// Get the auth provider used for sign-in
+    func getAuthProvider() -> AuthProvider? {
+        guard let raw = try? keychain.get(Keys.authProvider) else { return nil }
+        return AuthProvider(rawValue: raw)
+    }
+
+    /// Remove auth provider
+    func removeAuthProvider() throws {
+        try keychain.remove(Keys.authProvider)
+    }
+
+    // MARK: - Token Expiration
+
+    /// Save the token expiration date
+    func saveTokenExpirationDate(_ date: Date) throws {
+        let timestamp = String(date.timeIntervalSince1970)
+        try keychain.set(timestamp, key: Keys.tokenExpirationDate)
+    }
+
+    /// Get the token expiration date
+    func getTokenExpirationDate() -> Date? {
+        guard let timestamp = try? keychain.get(Keys.tokenExpirationDate),
+              let interval = TimeInterval(timestamp) else { return nil }
+        return Date(timeIntervalSince1970: interval)
+    }
+
+    /// Check if the access token has expired (with a 60-second margin)
+    var isAccessTokenExpired: Bool {
+        guard let expirationDate = getTokenExpirationDate() else {
+            // No expiration stored — consider expired to be safe
+            return true
+        }
+        return Date().addingTimeInterval(60) >= expirationDate
+    }
+
     // MARK: - Clear All
-    
+
     /// Clear all stored tokens and data
     func clearAll() throws {
         try keychain.removeAll()
     }
-    
+
     // MARK: - Auth State
-    
+
     /// Check if user is authenticated (has valid access token)
     var isAuthenticated: Bool {
         getAccessToken() != nil

@@ -5,17 +5,29 @@ final class ModelsService {
     static let shared = ModelsService()
 
     private let provider: MoyaProvider<ModelsAPI>
-    private let tokenStorage = TokenStorage.shared
+    private let tokenRefreshService: TokenRefreshService
 
-    init(provider: MoyaProvider<ModelsAPI> = NetworkManager.shared.modelsProvider) {
+    init(
+        provider: MoyaProvider<ModelsAPI> = NetworkManager.shared.modelsProvider,
+        tokenRefreshService: TokenRefreshService = .shared
+    ) {
         self.provider = provider
+        self.tokenRefreshService = tokenRefreshService
     }
 
     func fetchModels() async throws -> [AIModel] {
-        guard let token = tokenStorage.getAccessToken() else {
-            throw APIError.unauthorized
-        }
+        let token = try await tokenRefreshService.getValidAccessToken()
 
+        do {
+            return try await performFetchModels(token: token)
+        } catch APIError.unauthorized {
+            // Token was rejected — force refresh and retry once
+            let newToken = try await tokenRefreshService.forceRefresh()
+            return try await performFetchModels(token: newToken)
+        }
+    }
+
+    private func performFetchModels(token: String) async throws -> [AIModel] {
         return try await withCheckedThrowingContinuation { continuation in
             provider.request(.getModels(token: token)) { result in
                 switch result {

@@ -64,16 +64,16 @@ final class GoogleAuthService: AuthServiceProtocol {
     }
     
     // MARK: - Restore Previous Sign-In
-    
+
     /// Attempt to restore a previous sign-in session
     func restorePreviousSignIn() async throws -> AuthResult? {
         do {
             let user = try await GIDSignIn.sharedInstance.restorePreviousSignIn()
-            
+
             guard let idToken = user.idToken?.tokenString else {
                 return nil
             }
-            
+
             return AuthResult(
                 userId: user.userID ?? UUID().uuidString,
                 email: user.profile?.email,
@@ -83,6 +83,23 @@ final class GoogleAuthService: AuthServiceProtocol {
             )
         } catch {
             // No previous sign-in or restoration failed
+            return nil
+        }
+    }
+
+    // MARK: - Silent Token Refresh
+
+    /// Silently refresh the Google ID token using the SDK's internal refresh token.
+    /// Google Sign-In SDK stores its own refresh token and can issue a new ID token
+    /// without user interaction.
+    /// - Returns: Fresh ID token string, or nil if refresh failed
+    func refreshTokenSilently() async -> String? {
+        do {
+            let user = try await GIDSignIn.sharedInstance.restorePreviousSignIn()
+            // refreshTokensIfNeeded forces a token refresh if the current one is expired
+            let refreshResult = try await user.refreshTokensIfNeeded()
+            return refreshResult.idToken?.tokenString
+        } catch {
             return nil
         }
     }

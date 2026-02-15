@@ -20,6 +20,11 @@ final class NetworkManager {
     lazy var modelsProvider: MoyaProvider<ModelsAPI> = {
         createProvider()
     }()
+
+    /// Moya provider for Auth API (token exchange & refresh)
+    lazy var authProvider: MoyaProvider<AuthAPI> = {
+        createProvider()
+    }()
     
     // MARK: - Private Properties
     
