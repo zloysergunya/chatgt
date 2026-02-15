@@ -20,6 +20,9 @@ final class ModelsService {
 
         do {
             return try await performFetchModels(token: token)
+        } catch APIError.sessionExpired {
+            // Session expired — propagate, UI will handle via notification
+            throw APIError.sessionExpired
         } catch APIError.unauthorized {
             // Token was rejected — force refresh and retry once
             let newToken = try await tokenRefreshService.forceRefresh()

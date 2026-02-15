@@ -172,8 +172,14 @@ struct ChatView: View {
             let fetchedModels = try await ModelsService.shared.fetchModels()
             modelsDataStore.models = fetchedModels
             aiModels = fetchedModels
+        } catch let error as APIError where error is APIError {
+            if case .sessionExpired = error {
+                // Session expired — handled by ContentView via notification
+                return
+            }
+            // Other API errors — silently ignore or show fallback
         } catch {
-            // Handle error silently or use fallback
+            // Non-API errors — silently ignore
         }
     }
 }

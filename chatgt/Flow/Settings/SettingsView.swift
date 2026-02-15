@@ -126,6 +126,7 @@ struct SettingsView: View {
     }
 
     private func handleLogout() {
+        Task { await TokenRefreshService.shared.cancelProactiveRefresh() }
         try? tokenStorage.clearAll()
         profileDataStore.profile = nil
         onboardingDataStore.hasCompletedOnboarding = false

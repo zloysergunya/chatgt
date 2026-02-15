@@ -82,6 +82,9 @@ final class SignInViewModel: ObservableObject {
         isLoading = true
 
         do {
+            // Cancel scheduled proactive refresh
+            await tokenRefreshService.cancelProactiveRefresh()
+
             try await googleAuthService.signOut()
             try await appleAuthService.signOut()
             try await emailAuthService.signOut()

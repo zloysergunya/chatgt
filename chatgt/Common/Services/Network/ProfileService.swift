@@ -42,6 +42,9 @@ final class ProfileService {
 
         do {
             return try await performFetchProfile(token: accessToken)
+        } catch APIError.sessionExpired {
+            // Session expired — propagate, UI will handle via notification
+            throw APIError.sessionExpired
         } catch APIError.unauthorized {
             // Token was rejected — force refresh and retry once
             let newToken = try await tokenRefreshService.forceRefresh()
