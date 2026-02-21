@@ -84,9 +84,14 @@ final class PaywallViewModel: ObservableObject {
         errorMessage = nil
         
         do {
-            let transaction = try await storeManager.purchase(product)
-            if transaction != nil {
+            let result = try await storeManager.purchase(product)
+            if let result {
                 purchaseSuccessful = true
+
+                // Send transaction to backend (don't block UI on failure)
+                Task {
+                    try? await PaymentService.shared.processPayment(transaction: result.jwsRepresentation)
+                }
             }
         } catch StoreError.userCancelled {
             // User cancelled - no error message needed

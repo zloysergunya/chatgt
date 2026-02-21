@@ -20,6 +20,11 @@ final class NetworkManager {
     lazy var modelsProvider: MoyaProvider<ModelsAPI> = {
         createProvider()
     }()
+
+    /// Moya provider for Payments API
+    lazy var paymentsProvider: MoyaProvider<PaymentsAPI> = {
+        createProvider()
+    }()
     
     // MARK: - Private Properties
     

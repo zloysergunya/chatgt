@@ -70,22 +70,23 @@ final class StoreKitManager: ObservableObject {
         }
     }
         
-    func purchase(_ product: Product) async throws -> Transaction? {
+    func purchase(_ product: Product) async throws -> (transaction: Transaction, jwsRepresentation: String)? {
         let result = try await product.purchase()
-        
+
         switch result {
         case .success(let verification):
+            let jwsRepresentation = verification.jwsRepresentation
             let transaction = try checkVerified(verification)
             await updateSubscriptionStatus()
             await transaction.finish()
-            return transaction
-            
+            return (transaction, jwsRepresentation)
+
         case .userCancelled:
             throw StoreError.userCancelled
-            
+
         case .pending:
             return nil
-            
+
         @unknown default:
             throw StoreError.unknown
         }
@@ -119,9 +120,12 @@ final class StoreKitManager: ObservableObject {
         return Task.detached { [weak self] in
             for await result in Transaction.updates {
                 do {
+                    let jwsRepresentation = result.jwsRepresentation
                     let transaction = try await self?.checkVerified(result)
                     await self?.updateSubscriptionStatus()
                     await transaction?.finish()
+
+                    try? await PaymentService.shared.processPayment(transaction: jwsRepresentation)
                 } catch {
                     print("Transaction failed verification: \(error)")
                 }
