@@ -99,8 +99,10 @@ struct SettingsView: View {
                     .font(.system(size: 16, weight: .medium))
                     .foregroundColor(.white)
                     .frame(width: 32, height: 32)
-                    .glassEffect(
-                        .clear.interactive().tint(.white.opacity(0.2)),
+                    .compatGlassEffect(
+                        .clear,
+                        tint: .white.opacity(0.2),
+                        interactive: true,
                         in: .circle
                     )
             }

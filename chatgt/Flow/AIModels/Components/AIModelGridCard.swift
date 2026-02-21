@@ -28,8 +28,10 @@ struct AIModelGridCard: View {
             .frame(maxWidth: 163, alignment: .leading)
             .padding(10)
             .background(Color(hex: 0x0D1526).opacity(0.2))
-            .glassEffect(
-                .clear.interactive().tint(Color(hex: 0x0D1526).opacity(0.2)),
+            .compatGlassEffect(
+                .clear,
+                tint: Color(hex: 0x0D1526).opacity(0.2),
+                interactive: true,
                 in: .rect(cornerRadius: 16)
             )
         }

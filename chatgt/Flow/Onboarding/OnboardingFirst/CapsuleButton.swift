@@ -9,8 +9,10 @@ struct CapsuleButton: View {
             .foregroundColor(.white)
             .padding(.horizontal, 10)
             .padding(.vertical, 4.5)
-            .glassEffect(
-                .regular.interactive().tint(.black.opacity(0.2)),
+            .compatGlassEffect(
+                .regular,
+                tint: .black.opacity(0.2),
+                interactive: true,
                 in: .rect(cornerRadius: 8.0)
             )
     }

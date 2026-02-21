@@ -56,8 +56,9 @@ struct AllModelsView: View {
                     .font(.system(size: 14, weight: .medium))
                     .foregroundColor(.white)
                     .frame(width: 32, height: 32)
-                    .glassEffect(
-                        .regular.tint(.white.opacity(0.2)),
+                    .compatGlassEffect(
+                        .regular,
+                        tint: .white.opacity(0.2),
                         in: .circle
                     )
             }

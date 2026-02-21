@@ -54,8 +54,10 @@ struct OnboardingSecondView: View {
             .padding(.horizontal, 28)
             .padding(.vertical, 20)
         }
-        .glassEffect(
-            .regular.interactive().tint(.black),
+        .compatGlassEffect(
+            .regular,
+            tint: .black,
+            interactive: true,
             in: .rect(cornerRadius: 16)
         )
         .padding(.horizontal, 18)

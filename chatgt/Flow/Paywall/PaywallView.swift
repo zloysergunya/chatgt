@@ -74,7 +74,7 @@ struct PaywallView: View {
         .task {
             await viewModel.loadProducts()
         }
-        .onChange(of: viewModel.purchaseSuccessful) { _, success in
+        .onChange(of: viewModel.purchaseSuccessful) { success in
             if success {
                 onPurchaseSuccess?()
                 dismiss()

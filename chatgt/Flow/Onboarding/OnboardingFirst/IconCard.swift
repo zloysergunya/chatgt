@@ -19,8 +19,10 @@ struct IconCard: View {
             .aspectRatio(contentMode: .fit)
             .frame(width: imageWidth, height: imageHeight)
             .frame(width: size.width, height: size.height)
-            .glassEffect(
-                .regular.interactive().tint(.black),
+            .compatGlassEffect(
+                .regular,
+                tint: .black,
+                interactive: true,
                 in: .rect(cornerRadius: 8.0)
             )
     }

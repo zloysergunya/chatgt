@@ -48,7 +48,7 @@ struct SignInView: View {
             }
         }
         .ignoresSafeArea()
-        .onChange(of: viewModel.authSuccess) { _, success in
+        .onChange(of: viewModel.authSuccess) { success in
             if success, let result = viewModel.currentAuthResult {
                 onSignInSuccess?(result)
                 dismiss()

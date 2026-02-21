@@ -88,8 +88,10 @@ struct ChatView: View {
                         .frame(width: 20, height: 20)
                         .cornerRadius(6)
                         .padding(6)
-                        .glassEffect(
-                            .regular.interactive().tint(.white.opacity(0.2)),
+                        .compatGlassEffect(
+                            .regular,
+                            tint: .white.opacity(0.2),
+                            interactive: true,
                             in: .rect(cornerRadius: 16)
                         )
                 }

@@ -25,8 +25,10 @@ struct FeatureCard: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(10)
-        .glassEffect(
-            .regular.interactive().tint(.black),
+        .compatGlassEffect(
+            .regular,
+            tint: .black,
+            interactive: true,
             in: .rect(cornerRadius: 12)
         )
     }
