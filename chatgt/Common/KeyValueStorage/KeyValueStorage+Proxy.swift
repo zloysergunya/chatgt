@@ -71,7 +71,8 @@ final class __KVStorageProxy<EnclosingSelf: DataStoring, WrappedType: Codable> {
         get { fatalError("called wrappedValue getter") }
         set { fatalError("called wrappedValue setter with value \(newValue)") }
     }
-    
+
+    deinit {}
 }
 
 extension __KVStorageProxy where EnclosingSelf: PersistentStoring {
