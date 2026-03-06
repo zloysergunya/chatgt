@@ -14,6 +14,7 @@ final class TokenStorage {
         static let accessToken = "com.chatgt.accessToken"
         static let refreshToken = "com.chatgt.refreshToken"
         static let userIdentifier = "com.chatgt.userIdentifier"
+        static let authProvider = "com.chatgt.authProvider"
     }
     
     // MARK: - Private Properties
@@ -78,6 +79,24 @@ final class TokenStorage {
         try keychain.remove(Keys.userIdentifier)
     }
     
+    // MARK: - Auth Provider
+
+    /// Save auth provider to Keychain
+    func saveAuthProvider(_ provider: AuthProvider) throws {
+        try keychain.set(provider.rawValue, key: Keys.authProvider)
+    }
+
+    /// Get auth provider from Keychain
+    func getAuthProvider() -> AuthProvider? {
+        guard let rawValue = try? keychain.get(Keys.authProvider) else { return nil }
+        return AuthProvider(rawValue: rawValue)
+    }
+
+    /// Remove auth provider from Keychain
+    func removeAuthProvider() throws {
+        try keychain.remove(Keys.authProvider)
+    }
+
     // MARK: - Clear All
     
     /// Clear all stored tokens and data

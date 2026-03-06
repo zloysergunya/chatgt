@@ -36,6 +36,12 @@ struct ContentView: View {
                 currentFlow = .main
             }
         }
+        .task {
+            // Proactively refresh token on app launch
+            if tokenStorage.isAuthenticated {
+                _ = try? await TokenRefreshService.shared.refreshToken()
+            }
+        }
     }
 }
 

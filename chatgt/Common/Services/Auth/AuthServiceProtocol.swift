@@ -8,19 +8,22 @@ struct AuthResult {
     let displayName: String?
     let provider: AuthProvider
     let token: String?  // JWT token from Apple/Google
-    
+    let authorizationCode: String?  // Apple authorization code for backend token exchange
+
     init(
         userId: String,
         email: String? = nil,
         displayName: String? = nil,
         provider: AuthProvider,
-        token: String? = nil
+        token: String? = nil,
+        authorizationCode: String? = nil
     ) {
         self.userId = userId
         self.email = email
         self.displayName = displayName
         self.provider = provider
         self.token = token
+        self.authorizationCode = authorizationCode
     }
 }
 

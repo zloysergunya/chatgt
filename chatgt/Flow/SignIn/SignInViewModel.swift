@@ -98,34 +98,20 @@ private extension SignInViewModel {
     func performSignIn(action: @escaping () async throws -> AuthResult) async {
         isLoading = true
         errorMessage = nil
-        
+
         do {
             let result = try await action()
-            
-            guard let token = result.token else {
-                showError(message: "Failed to get authentication token")
-                isLoading = false
-                return
-            }
-            
-            let isAuthenticated = try await profileService.authenticate(token: token)
-            
-            guard isAuthenticated else {
-                showError(message: "Backend authentication failed")
-                isLoading = false
-                return
-            }
-            
-            try tokenStorage.saveAccessToken(token)
-            try tokenStorage.saveUserIdentifier(result.userId)
 
-            // Fetch and save user profile
-            let profile = try await profileService.fetchProfile(token: token)
-            profileDataStore.profile = profile
+            switch result.provider {
+            case .apple:
+                try await handleAppleSignIn(result: result)
+            case .google, .email:
+                try await handleDefaultSignIn(result: result)
+            }
 
             currentAuthResult = result
             authSuccess = true
-            
+
         } catch AuthError.cancelled {
             // User cancelled - no error message needed
         } catch let error as AuthError {
@@ -135,8 +121,49 @@ private extension SignInViewModel {
         } catch {
             showError(message: error.localizedDescription)
         }
-        
+
         isLoading = false
+    }
+
+    func handleAppleSignIn(result: AuthResult) async throws {
+        guard let idToken = result.token else {
+            showError(message: "Failed to get Apple identity token")
+            return
+        }
+        guard let authCode = result.authorizationCode else {
+            showError(message: "Failed to get Apple authorization code")
+            return
+        }
+
+        let tokenPair = try await profileService.createProfile(
+            token: idToken, authProvider: "apple", code: authCode
+        )
+
+        try saveTokens(tokenPair, userId: result.userId, provider: result.provider)
+
+        let profile = try await profileService.fetchProfile(token: tokenPair.idToken)
+        profileDataStore.profile = profile
+    }
+
+    func handleDefaultSignIn(result: AuthResult) async throws {
+        guard let token = result.token else {
+            showError(message: "Failed to get authentication token")
+            return
+        }
+
+        let tokenPair = try await profileService.createProfile(token: token)
+
+        try saveTokens(tokenPair, userId: result.userId, provider: result.provider)
+
+        let profile = try await profileService.fetchProfile(token: tokenPair.idToken)
+        profileDataStore.profile = profile
+    }
+
+    func saveTokens(_ tokenPair: TokenPairResponse, userId: String, provider: AuthProvider) throws {
+        try tokenStorage.saveAccessToken(tokenPair.idToken)
+        try tokenStorage.saveRefreshToken(tokenPair.refreshToken)
+        try tokenStorage.saveUserIdentifier(userId)
+        try tokenStorage.saveAuthProvider(provider)
     }
     
     func showError(message: String) {

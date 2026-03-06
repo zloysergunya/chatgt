@@ -12,6 +12,16 @@ final class ModelsService {
     }
 
     func fetchModels() async throws -> [AIModel] {
+        do {
+            return try await performFetchModels()
+        } catch APIError.unauthorized {
+            // Token expired — attempt refresh and retry once
+            _ = try await TokenRefreshService.shared.refreshToken()
+            return try await performFetchModels()
+        }
+    }
+
+    private func performFetchModels() async throws -> [AIModel] {
         guard let token = tokenStorage.getAccessToken() else {
             throw APIError.unauthorized
         }

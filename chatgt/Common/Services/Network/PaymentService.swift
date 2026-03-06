@@ -24,6 +24,16 @@ final class PaymentService {
     /// - Parameter transaction: JWS representation of the StoreKit transaction
     /// - Throws: `APIError` if the request fails
     func processPayment(transaction: String) async throws {
+        do {
+            try await performProcessPayment(transaction: transaction)
+        } catch APIError.unauthorized {
+            // Token expired — attempt refresh and retry once
+            _ = try await TokenRefreshService.shared.refreshToken()
+            try await performProcessPayment(transaction: transaction)
+        }
+    }
+
+    private func performProcessPayment(transaction: String) async throws {
         guard let token = TokenStorage.shared.getAccessToken() else {
             throw APIError.unauthorized
         }

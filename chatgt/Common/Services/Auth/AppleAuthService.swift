@@ -72,13 +72,20 @@ extension AppleAuthService: ASAuthorizationControllerDelegate {
             ]
                 .compactMap { $0 }
                 .joined(separator: " ")
-            
+
+            // Extract authorization code for backend token exchange
+            var authCode: String?
+            if let authorizationCodeData = appleIDCredential.authorizationCode {
+                authCode = String(data: authorizationCodeData, encoding: .utf8)
+            }
+
             let result = AuthResult(
                 userId: userId,
                 email: email,
                 displayName: fullName.isEmpty ? nil : fullName,
                 provider: .apple,
-                token: identityToken
+                token: identityToken,
+                authorizationCode: authCode
             )
             
             continuation?.resume(returning: result)
