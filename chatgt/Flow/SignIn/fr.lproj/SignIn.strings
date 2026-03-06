@@ -1,0 +1,13 @@
+/* Sign In screen strings */
+
+"title" = "Se connecter à";
+"subtitle" = "Connectez-vous une fois. Discutez partout, avec n'importe quel modèle";
+"google" = "Se connecter avec Google";
+"apple" = "Se connecter avec Apple";
+"email" = "Se connecter avec Email";
+"no_account" = "Pas de compte ?";
+"signup" = "S'inscrire";
+"error_apple_token" = "Impossible d'obtenir le jeton d'identité Apple";
+"error_apple_code" = "Impossible d'obtenir le code d'autorisation Apple";
+"error_auth_token" = "Impossible d'obtenir le jeton d'authentification";
+"error_generic" = "Une erreur est survenue";

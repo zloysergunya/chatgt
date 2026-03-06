@@ -1,0 +1,16 @@
+/* Onboarding screen strings */
+
+"title1" = "顶级 AI 模型，尽在一个应用";
+"subtitle1" = "Chat GT 汇聚全球最智能的系统";
+"title2" = "一个 AI 搞定所有任务";
+"subtitle2" = "在 AI 模式和风格之间无缝切换";
+"title3" = "实时推理与即时搜索";
+"feature_text" = "文本生成";
+"feature_code" = "编程助手";
+"feature_image" = "图像生成";
+"feature_file" = "文件处理";
+"feature_desc" = "工具简介\n简短明了";
+"capsule_text" = "文本";
+"capsule_code" = "代码";
+"capsule_images" = "图像";
+"capsule_files" = "文件";

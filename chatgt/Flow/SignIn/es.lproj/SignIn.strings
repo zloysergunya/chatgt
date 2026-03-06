@@ -1,0 +1,13 @@
+/* Sign In screen strings */
+
+"title" = "Inicia sesión en";
+"subtitle" = "Conéctate una vez. Chatea en cualquier lugar, con cualquier modelo";
+"google" = "Iniciar sesión con Google";
+"apple" = "Iniciar sesión con Apple";
+"email" = "Iniciar sesión con Email";
+"no_account" = "¿No tienes una cuenta?";
+"signup" = "Regístrate";
+"error_apple_token" = "Error al obtener el token de identidad de Apple";
+"error_apple_code" = "Error al obtener el código de autorización de Apple";
+"error_auth_token" = "Error al obtener el token de autenticación";
+"error_generic" = "Ocurrió un error";

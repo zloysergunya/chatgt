@@ -1,0 +1,7 @@
+/* Common strings shared across the app */
+
+"continue_button" = "Weiter";
+"error" = "Fehler";
+"ok" = "OK";
+"pro" = "PRO";
+"loading" = "Laden...";

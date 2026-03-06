@@ -1,5 +1,6 @@
 import SwiftUI
 import StoreKit
+import RswiftResources
 
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
@@ -15,7 +16,7 @@ struct SettingsView: View {
     private let termsOfUseURL = "https://example.com/terms"
     private let supportEmail = "support@chatgt.ai"
     private let appStoreURL = "https://apps.apple.com/app/idXXXXXXXXXX"
-    private let shareText = "Check out Chat GT - AI Assistant"
+    private var shareText: String { R.string.settings.share_text() }
 
     var onLogout: (() -> Void)?
 
@@ -31,41 +32,41 @@ struct SettingsView: View {
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 6) {
                         if !tokenStorage.isAuthenticated {
-                            SettingsRow(icon: "person.circle", title: "Log In") {
+                            SettingsRow(icon: "person.circle", title: R.string.settings.login()) {
                                 handleLogIn()
                             }
                         }
-                        
-                        SettingsRow(icon: "clock.arrow.circlepath", title: "History") {
+
+                        SettingsRow(icon: "clock.arrow.circlepath", title: R.string.settings.history()) {
                             handleHistory()
                         }
 
-                        SettingsRow(icon: "globe", title: "Change Language") {
+                        SettingsRow(icon: "globe", title: R.string.settings.language()) {
                             handleChangeLanguage()
                         }
 
-                        SettingsRow(icon: "square.and.arrow.up", title: "Share Chat GT") {
+                        SettingsRow(icon: "square.and.arrow.up", title: R.string.settings.share()) {
                             handleShare()
                         }
 
-                        SettingsRow(icon: "star", title: "Rate Us") {
+                        SettingsRow(icon: "star", title: R.string.settings.rate()) {
                             handleRateUs()
                         }
 
-                        SettingsRow(icon: "info.circle", title: "Ask support") {
+                        SettingsRow(icon: "info.circle", title: R.string.settings.support()) {
                             handleAskSupport()
                         }
 
-                        SettingsRow(icon: "checkmark.shield", title: "Private Policy") {
+                        SettingsRow(icon: "checkmark.shield", title: R.string.settings.privacy()) {
                             handlePrivacyPolicy()
                         }
 
-                        SettingsRow(icon: "doc.text", title: "Term of Use") {
+                        SettingsRow(icon: "doc.text", title: R.string.settings.terms()) {
                             handleTermsOfUse()
                         }
-                        
+
                         if tokenStorage.isAuthenticated {
-                            SettingsRow(icon: "rectangle.portrait.and.arrow.right", title: "Log Out") {
+                            SettingsRow(icon: "rectangle.portrait.and.arrow.right", title: R.string.settings.logout()) {
                                 handleLogout()
                             }
                         }
@@ -109,7 +110,7 @@ struct SettingsView: View {
 
             Spacer()
 
-            Text("Settings")
+            Text(R.string.settings.title())
                 .font(.system(size: 24, weight: .semibold))
                 .foregroundColor(.white)
 

@@ -1,0 +1,13 @@
+/* Settings screen strings */
+
+"title" = "设置";
+"login" = "登录";
+"history" = "历史记录";
+"language" = "更改语言";
+"share" = "分享 Chat GT";
+"rate" = "给我们评分";
+"support" = "联系客服";
+"privacy" = "隐私政策";
+"terms" = "使用条款";
+"logout" = "退出登录";
+"share_text" = "推荐 Chat GT — AI 助手";

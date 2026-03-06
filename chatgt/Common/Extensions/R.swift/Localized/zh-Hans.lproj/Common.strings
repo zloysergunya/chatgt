@@ -1,0 +1,7 @@
+/* Common strings shared across the app */
+
+"continue_button" = "继续";
+"error" = "错误";
+"ok" = "确定";
+"pro" = "PRO";
+"loading" = "加载中...";

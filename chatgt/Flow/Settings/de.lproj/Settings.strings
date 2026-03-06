@@ -1,0 +1,13 @@
+/* Settings screen strings */
+
+"title" = "Einstellungen";
+"login" = "Anmelden";
+"history" = "Verlauf";
+"language" = "Sprache ändern";
+"share" = "Chat GT teilen";
+"rate" = "Bewerten";
+"support" = "Support";
+"privacy" = "Datenschutzrichtlinie";
+"terms" = "Nutzungsbedingungen";
+"logout" = "Abmelden";
+"share_text" = "Probiere Chat GT aus – KI-Assistent";

@@ -1,4 +1,5 @@
 import SwiftUI
+import RswiftResources
 
 struct ChatInputBar: View {
     @Binding var text: String
@@ -16,7 +17,7 @@ struct ChatInputBar: View {
                     .clipShape(Circle())
             }
 
-            TextField("Ask anything", text: $text)
+            TextField(R.string.chat.ask_anything(), text: $text)
                 .font(.system(size: 16))
                 .foregroundColor(.white)
                 .padding(.horizontal, 16)

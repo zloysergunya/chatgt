@@ -1,0 +1,9 @@
+/* API and network error strings */
+
+"unauthorized" = "未授权，请重新登录。";
+"network" = "网络错误：%@";
+"server" = "服务器错误 (%d)：%@";
+"server_code" = "服务器错误：%d";
+"decoding" = "解析响应失败：%@";
+"invalid_response" = "无效的服务器响应";
+"unknown" = "发生未知错误";

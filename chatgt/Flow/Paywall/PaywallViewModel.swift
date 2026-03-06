@@ -1,6 +1,7 @@
 import Foundation
 import StoreKit
 import Combine
+import RswiftResources
 
 @MainActor
 final class PaywallViewModel: ObservableObject {
@@ -44,9 +45,9 @@ final class PaywallViewModel: ObservableObject {
         guard let yearly = yearlyProduct else { return nil }
         
         if let trialDays = trialDescription {
-            return "\(trialDays), then \(yearly.displayPrice) per year."
+            return R.string.paywall.trial_info(trialDays, yearly.displayPrice)
         }
-        return "\(yearly.displayPrice) per year."
+        return R.string.paywall.price_info(yearly.displayPrice)
     }
     
     // MARK: - Initialization
@@ -76,7 +77,7 @@ final class PaywallViewModel: ObservableObject {
     
     func purchase() async {
         guard let product = selectedProduct else {
-            showError(message: "Please select a subscription")
+            showError(message: R.string.paywall.error_select())
             return
         }
         
@@ -111,7 +112,7 @@ final class PaywallViewModel: ObservableObject {
             if storeManager.isSubscribed {
                 purchaseSuccessful = true
             } else {
-                showError(message: "No purchases to restore")
+                showError(message: R.string.paywall.error_no_restore())
             }
         } catch {
             showError(message: error.localizedDescription)

@@ -1,5 +1,6 @@
 import SwiftUI
 import StoreKit
+import RswiftResources
 
 struct SubscriptionOptionContainer: View {
     let title: String
@@ -14,7 +15,7 @@ struct SubscriptionOptionContainer: View {
     var body: some View {
         if isBestOffer {
             VStack(spacing: 0) {
-                Text("BEST OFFER")
+                Text(R.string.paywall.best_offer())
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)

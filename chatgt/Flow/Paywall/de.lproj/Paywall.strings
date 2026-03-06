@@ -1,0 +1,22 @@
+/* Paywall screen strings */
+
+"get" = "HOL DIR";
+"pro" = "PRO";
+"access" = "ZUGANG";
+"feature_ai" = "All-in-One-KI";
+"feature_thinking" = "Denken & Suche";
+"feature_models" = "Neueste KI-Modelle";
+"yearly" = "Jahreszugang";
+"weekly" = "Wochenzugang";
+"monthly" = "Monatszugang";
+"best_value" = "Bester Preis";
+"best_offer" = "BESTES ANGEBOT";
+"unlock" = "ALLE FUNKTIONEN FREISCHALTEN";
+"trial_info" = "%1$@, dann %2$@ pro Jahr.";
+"price_info" = "%@ pro Jahr.";
+"no_commitment" = "Keine Bindung. Jederzeit kündbar.";
+"terms" = "Nutzungsbedingungen";
+"restore" = "Käufe wiederherstellen";
+"privacy_policy" = "Datenschutzrichtlinie";
+"error_select" = "Bitte wählen Sie ein Abonnement";
+"error_no_restore" = "Keine Käufe zum Wiederherstellen";

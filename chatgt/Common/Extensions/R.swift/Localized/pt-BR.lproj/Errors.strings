@@ -1,0 +1,9 @@
+/* API and network error strings */
+
+"unauthorized" = "Não autorizado. Faça login novamente.";
+"network" = "Erro de rede: %@";
+"server" = "Erro do servidor (%d): %@";
+"server_code" = "Erro do servidor: %d";
+"decoding" = "Falha ao decodificar a resposta: %@";
+"invalid_response" = "Resposta do servidor inválida";
+"unknown" = "Ocorreu um erro desconhecido";

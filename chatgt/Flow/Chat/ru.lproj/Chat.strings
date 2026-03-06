@@ -1,0 +1,7 @@
+/* Chat screen strings */
+
+"title" = "Chat GT";
+"ai_models" = "Модели ИИ";
+"history" = "История";
+"see_all" = "Все";
+"ask_anything" = "Спросите что угодно";

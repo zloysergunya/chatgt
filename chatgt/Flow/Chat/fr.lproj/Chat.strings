@@ -1,0 +1,7 @@
+/* Chat screen strings */
+
+"title" = "Chat GT";
+"ai_models" = "Modèles d'IA";
+"history" = "Historique";
+"see_all" = "Tout voir";
+"ask_anything" = "Posez votre question";

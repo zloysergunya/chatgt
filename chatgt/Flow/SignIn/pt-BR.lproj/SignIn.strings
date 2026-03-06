@@ -1,0 +1,13 @@
+/* Sign In screen strings */
+
+"title" = "Entrar no";
+"subtitle" = "Conecte-se uma vez. Converse em qualquer lugar, com qualquer modelo";
+"google" = "Entrar com Google";
+"apple" = "Entrar com Apple";
+"email" = "Entrar com Email";
+"no_account" = "Não tem uma conta?";
+"signup" = "Cadastre-se";
+"error_apple_token" = "Falha ao obter o token de identidade da Apple";
+"error_apple_code" = "Falha ao obter o código de autorização da Apple";
+"error_auth_token" = "Falha ao obter o token de autenticação";
+"error_generic" = "Ocorreu um erro";

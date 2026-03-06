@@ -1,0 +1,22 @@
+/* Paywall screen strings */
+
+"get" = "OBTENEZ";
+"pro" = "PRO";
+"access" = "L'ACCÈS";
+"feature_ai" = "IA tout-en-un";
+"feature_thinking" = "Réflexion et recherche";
+"feature_models" = "Derniers modèles d'IA";
+"yearly" = "Accès annuel";
+"weekly" = "Accès hebdomadaire";
+"monthly" = "Accès mensuel";
+"best_value" = "Meilleur prix";
+"best_offer" = "MEILLEURE OFFRE";
+"unlock" = "DÉBLOQUER TOUTES LES FONCTIONNALITÉS";
+"trial_info" = "%1$@, puis %2$@ par an.";
+"price_info" = "%@ par an.";
+"no_commitment" = "Sans engagement. Annulez à tout moment.";
+"terms" = "Conditions d'utilisation";
+"restore" = "Restaurer les achats";
+"privacy_policy" = "Politique de confidentialité";
+"error_select" = "Veuillez sélectionner un abonnement";
+"error_no_restore" = "Aucun achat à restaurer";

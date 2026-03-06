@@ -1,4 +1,5 @@
 import SwiftUI
+import RswiftResources
 
 struct AllModelsView: View {
     @Environment(\.dismiss) private var dismiss
@@ -65,7 +66,7 @@ struct AllModelsView: View {
 
             Spacer()
 
-            Text("AI models")
+            Text(R.string.chat.ai_models())
                 .font(.system(size: 20, weight: .semibold))
                 .foregroundColor(.white)
 

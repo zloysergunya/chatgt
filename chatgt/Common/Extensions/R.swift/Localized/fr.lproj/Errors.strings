@@ -1,0 +1,9 @@
+/* API and network error strings */
+
+"unauthorized" = "Non autorisé. Veuillez vous reconnecter.";
+"network" = "Erreur réseau : %@";
+"server" = "Erreur serveur (%d) : %@";
+"server_code" = "Erreur serveur : %d";
+"decoding" = "Impossible de décoder la réponse : %@";
+"invalid_response" = "Réponse du serveur invalide";
+"unknown" = "Une erreur inconnue est survenue";

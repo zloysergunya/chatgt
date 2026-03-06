@@ -1,0 +1,13 @@
+/* Sign In screen strings */
+
+"title" = "Войти в";
+"subtitle" = "Подключитесь один раз. Общайтесь где угодно, с любой моделью";
+"google" = "Войти через Google";
+"apple" = "Войти через Apple";
+"email" = "Войти через Email";
+"no_account" = "Нет аккаунта?";
+"signup" = "Зарегистрироваться";
+"error_apple_token" = "Не удалось получить токен Apple";
+"error_apple_code" = "Не удалось получить код авторизации Apple";
+"error_auth_token" = "Не удалось получить токен аутентификации";
+"error_generic" = "Произошла ошибка";

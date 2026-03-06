@@ -1,0 +1,16 @@
+/* Onboarding screen strings */
+
+"title1" = "Top AI Models in One App";
+"subtitle1" = "Chat GT unites the world's smartest systems";
+"title2" = "One AI For All Tasks";
+"subtitle2" = "Seamlessly switch between AI modes and styles";
+"title3" = "Real-time reasoning, and live search";
+"feature_text" = "Text generation";
+"feature_code" = "Coding Assistant";
+"feature_image" = "Image Generation";
+"feature_file" = "Work with File";
+"feature_desc" = "Description of this tool\nShort and clear";
+"capsule_text" = "Text";
+"capsule_code" = "Code";
+"capsule_images" = "Images";
+"capsule_files" = "Files";

@@ -1,0 +1,22 @@
+/* Paywall screen strings */
+
+"get" = "GET";
+"pro" = "PRO";
+"access" = "ACCESS";
+"feature_ai" = "All-in-One AI";
+"feature_thinking" = "Thinking & Search";
+"feature_models" = "Latest AI Models";
+"yearly" = "Yearly Access";
+"weekly" = "Weekly Access";
+"monthly" = "Monthly Access";
+"best_value" = "Best value";
+"best_offer" = "BEST OFFER";
+"unlock" = "UNLOCK ALL FEATURES";
+"trial_info" = "%1$@, then %2$@ per year.";
+"price_info" = "%@ per year.";
+"no_commitment" = "No commitment. Cancel anytime.";
+"terms" = "Terms of Use";
+"restore" = "Restore Purchases";
+"privacy_policy" = "Privacy Policy";
+"error_select" = "Please select a subscription";
+"error_no_restore" = "No purchases to restore";

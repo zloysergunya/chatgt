@@ -1,0 +1,13 @@
+/* Settings screen strings */
+
+"title" = "Ajustes";
+"login" = "Iniciar sesión";
+"history" = "Historial";
+"language" = "Cambiar idioma";
+"share" = "Compartir Chat GT";
+"rate" = "Valorar";
+"support" = "Soporte";
+"privacy" = "Política de privacidad";
+"terms" = "Términos de uso";
+"logout" = "Cerrar sesión";
+"share_text" = "Mira Chat GT - Asistente de IA";

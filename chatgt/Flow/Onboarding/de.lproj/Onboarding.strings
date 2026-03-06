@@ -1,0 +1,16 @@
+/* Onboarding screen strings */
+
+"title1" = "Top-KI-Modelle in einer App";
+"subtitle1" = "Chat GT vereint die intelligentesten Systeme der Welt";
+"title2" = "Eine KI für alle Aufgaben";
+"subtitle2" = "Nahtlos zwischen KI-Modi und -Stilen wechseln";
+"title3" = "Echtzeit-Reasoning und Live-Suche";
+"feature_text" = "Texterstellung";
+"feature_code" = "Code-Assistent";
+"feature_image" = "Bilderstellung";
+"feature_file" = "Dateiarbeit";
+"feature_desc" = "Beschreibung dieses Tools\nKurz und klar";
+"capsule_text" = "Text";
+"capsule_code" = "Code";
+"capsule_images" = "Bilder";
+"capsule_files" = "Dateien";

@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import RswiftResources
 
 @MainActor
 final class SignInViewModel: ObservableObject {
@@ -127,11 +128,11 @@ private extension SignInViewModel {
 
     func handleAppleSignIn(result: AuthResult) async throws {
         guard let idToken = result.token else {
-            showError(message: "Failed to get Apple identity token")
+            showError(message: R.string.signIn.error_apple_token())
             return
         }
         guard let authCode = result.authorizationCode else {
-            showError(message: "Failed to get Apple authorization code")
+            showError(message: R.string.signIn.error_apple_code())
             return
         }
 
@@ -147,7 +148,7 @@ private extension SignInViewModel {
 
     func handleDefaultSignIn(result: AuthResult) async throws {
         guard let token = result.token else {
-            showError(message: "Failed to get authentication token")
+            showError(message: R.string.signIn.error_auth_token())
             return
         }
 

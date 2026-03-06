@@ -1,5 +1,6 @@
 import SwiftUI
 import StoreKit
+import RswiftResources
 
 struct PaywallView: View {
     @Environment(\.dismiss) private var dismiss
@@ -80,25 +81,25 @@ struct PaywallView: View {
                 dismiss()
             }
         }
-        .alert("Error", isPresented: $viewModel.showError) {
-            Button("OK", role: .cancel) {}
+        .alert(R.string.common.error(), isPresented: $viewModel.showError) {
+            Button(R.string.common.ok(), role: .cancel) {}
         } message: {
-            Text(viewModel.errorMessage ?? "An error occurred")
+            Text(viewModel.errorMessage ?? R.string.signIn.error_generic())
         }
     }
     
     private var headerSection: some View {
         VStack {
             HStack(spacing: 8) {
-                Text("GET")
+                Text(R.string.paywall.get())
                     .font(.system(size: 34, weight: .semibold))
                     .foregroundColor(.white)
-                
-                Text("PRO")
+
+                Text(R.string.paywall.pro())
                     .font(.system(size: 34, weight: .semibold))
                     .foregroundColor(Color(hex: 0x2F68FF))
-                
-                Text("ACCESS")
+
+                Text(R.string.paywall.access())
                     .font(.system(size: 34, weight: .semibold))
                     .foregroundColor(.white)
             }
@@ -112,20 +113,20 @@ struct PaywallView: View {
                 FeatureTagView(
                     icon: "circle.grid.2x2.fill",
                     iconColor: .green,
-                    title: "All-in-One AI"
+                    title: R.string.paywall.feature_ai()
                 )
-                
+
                 FeatureTagView(
                     icon: "paperplane.fill",
                     iconColor: Color(hex: 0x4A90E2),
-                    title: "Thinking & Search"
+                    title: R.string.paywall.feature_thinking()
                 )
             }
-            
+
             FeatureTagView(
                 icon: "mic.fill",
                 iconColor: .red,
-                title: "Latest AI Models"
+                title: R.string.paywall.feature_models()
             )
         }
     }
@@ -161,18 +162,18 @@ struct PaywallView: View {
     private var placeholderSubscriptionOptions: some View {
         VStack(spacing: 12) {
             SubscriptionOptionContainer(
-                title: "Yearly Access",
-                subtitle: "Best value",
-                pricePerWeek: "Loading...",
+                title: R.string.paywall.yearly(),
+                subtitle: R.string.paywall.best_value(),
+                pricePerWeek: R.string.common.loading(),
                 isSelected: true,
                 isBestOffer: true,
                 action: {}
             )
-            
+
             SubscriptionOptionContainer(
-                title: "Weekly Access",
+                title: R.string.paywall.weekly(),
                 subtitle: "",
-                pricePerWeek: "Loading...",
+                pricePerWeek: R.string.common.loading(),
                 isSelected: false,
                 isBestOffer: false,
                 action: {}
@@ -191,7 +192,7 @@ struct PaywallView: View {
                     ProgressView()
                         .tint(.white)
                 } else {
-                    Text("UNLOCK ALL FEATURES")
+                    Text(R.string.paywall.unlock())
                         .font(.system(size: 16, weight: .semibold))
                 }
             }
@@ -213,12 +214,12 @@ struct PaywallView: View {
                     .font(.system(size: 10))
                     .foregroundColor(.white)
             } else {
-                Text("7 days Free Trial, then 179,99 AED per year.")
+                Text(R.string.paywall.trial_info("7 days Free Trial", "179,99 AED"))
                     .font(.system(size: 10))
                     .foregroundColor(.white)
             }
-            
-            Text("No commitment. Cancel anytime.")
+
+            Text(R.string.paywall.no_commitment())
                 .font(.system(size: 10))
                 .foregroundColor(Color(hex: 0x707579))
         }
@@ -230,30 +231,30 @@ struct PaywallView: View {
             Button {
                 openURL(urlString: "https://example.com/terms")
             } label: {
-                Text("Terms of Use")
+                Text(R.string.paywall.terms())
                     .font(.system(size: 10))
                     .foregroundColor(.white)
             }
-            
+
             Spacer()
-            
+
             Button {
                 Task {
                     await viewModel.restore()
                 }
             } label: {
-                Text("Restore Purchases")
+                Text(R.string.paywall.restore())
                     .font(.system(size: 13))
                     .foregroundColor(.white)
                     .underline()
             }
-            
+
             Spacer()
-            
+
             Button {
                 openURL(urlString: "https://example.com/privacy")
             } label: {
-                Text("Privacy Policy")
+                Text(R.string.paywall.privacy_policy())
                     .font(.system(size: 10))
                     .foregroundColor(.white)
             }
@@ -269,11 +270,11 @@ struct PaywallView: View {
         
         switch subscription.subscriptionPeriod.unit {
         case .week:
-            return "Weekly Access"
+            return R.string.paywall.weekly()
         case .month:
-            return "Monthly Access"
+            return R.string.paywall.monthly()
         case .year:
-            return "Weekly Access" // Shows as weekly but billed yearly
+            return R.string.paywall.yearly()
         default:
             return product.displayName
         }

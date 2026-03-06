@@ -1,4 +1,5 @@
 import Foundation
+import RswiftResources
 
 /// API error types for network requests
 enum APIError: LocalizedError {
@@ -8,24 +9,24 @@ enum APIError: LocalizedError {
     case decodingError(Error)
     case invalidResponse
     case unknown
-    
+
     var errorDescription: String? {
         switch self {
         case .unauthorized:
-            return "Unauthorized. Please sign in again."
+            return R.string.errors.unauthorized()
         case .networkError(let error):
-            return "Network error: \(error.localizedDescription)"
+            return R.string.errors.network(error.localizedDescription)
         case .serverError(let statusCode, let message):
             if let message = message {
-                return "Server error (\(statusCode)): \(message)"
+                return R.string.errors.server(statusCode, message)
             }
-            return "Server error: \(statusCode)"
+            return R.string.errors.server_code(statusCode)
         case .decodingError(let error):
-            return "Failed to decode response: \(error.localizedDescription)"
+            return R.string.errors.decoding(error.localizedDescription)
         case .invalidResponse:
-            return "Invalid server response"
+            return R.string.errors.invalid_response()
         case .unknown:
-            return "An unknown error occurred"
+            return R.string.errors.unknown()
         }
     }
 }

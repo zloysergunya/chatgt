@@ -1,0 +1,22 @@
+/* Paywall screen strings */
+
+"get" = "获取";
+"pro" = "PRO";
+"access" = "权限";
+"feature_ai" = "全能 AI";
+"feature_thinking" = "推理与搜索";
+"feature_models" = "最新 AI 模型";
+"yearly" = "年度订阅";
+"weekly" = "每周订阅";
+"monthly" = "月度订阅";
+"best_value" = "最超值";
+"best_offer" = "最佳优惠";
+"unlock" = "解锁所有功能";
+"trial_info" = "%1$@，之后 %2$@/年。";
+"price_info" = "%@/年。";
+"no_commitment" = "无需承诺，随时取消。";
+"terms" = "使用条款";
+"restore" = "恢复购买";
+"privacy_policy" = "隐私政策";
+"error_select" = "请选择一个订阅方案";
+"error_no_restore" = "没有可恢复的购买";

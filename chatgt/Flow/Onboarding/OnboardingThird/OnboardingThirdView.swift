@@ -1,4 +1,5 @@
 import SwiftUI
+import RswiftResources
 
 struct OnboardingThirdView: View {
     var onContinue: () -> Void
@@ -25,22 +26,22 @@ struct OnboardingThirdView: View {
             Spacer()
                 .frame(height: centerY + offset + 76)
             
-            Text("Top AI Models in One App")
+            Text(R.string.onboarding.title1())
                 .font(.system(size: 28, weight: .semibold))
                 .foregroundColor(.white)
-            
-            Text("Real-time reasoning, and live search")
+
+            Text(R.string.onboarding.title3())
                 .font(.system(size: 20, weight: .semibold))
                 .foregroundColor(.white)
-            
-            Text("Chat GT unites the world’s smartest systems")
+
+            Text(R.string.onboarding.subtitle1())
                 .font(.system(size: 13))
                 .foregroundColor(Color(hex: 0x707579))
-            
+
             Button(action: {
                 onContinue()
             }) {
-                Text("Continue")
+                Text(R.string.common.continue_button())
                     .font(.system(size: 17, weight: .semibold))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)

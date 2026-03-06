@@ -1,0 +1,13 @@
+/* Sign In screen strings */
+
+"title" = "Sign In to";
+"subtitle" = "Connect once. Chat anywhere, with any model";
+"google" = "Sign in with Google";
+"apple" = "Sign in with Apple";
+"email" = "Sign in with Email";
+"no_account" = "Don't have an account?";
+"signup" = "Sign Up";
+"error_apple_token" = "Failed to get Apple identity token";
+"error_apple_code" = "Failed to get Apple authorization code";
+"error_auth_token" = "Failed to get authentication token";
+"error_generic" = "An error occurred";

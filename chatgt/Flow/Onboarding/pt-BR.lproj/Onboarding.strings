@@ -1,0 +1,16 @@
+/* Onboarding screen strings */
+
+"title1" = "Os melhores modelos de IA em um app";
+"subtitle1" = "Chat GT reúne os sistemas mais inteligentes do mundo";
+"title2" = "Uma IA para todas as tarefas";
+"subtitle2" = "Alterne facilmente entre modos e estilos de IA";
+"title3" = "Raciocínio em tempo real e busca ao vivo";
+"feature_text" = "Geração de texto";
+"feature_code" = "Assistente de código";
+"feature_image" = "Geração de imagens";
+"feature_file" = "Trabalho com arquivos";
+"feature_desc" = "Descrição desta ferramenta\nCurta e clara";
+"capsule_text" = "Texto";
+"capsule_code" = "Código";
+"capsule_images" = "Imagens";
+"capsule_files" = "Arquivos";

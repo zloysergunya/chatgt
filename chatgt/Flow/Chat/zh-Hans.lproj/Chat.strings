@@ -1,0 +1,7 @@
+/* Chat screen strings */
+
+"title" = "Chat GT";
+"ai_models" = "AI 模型";
+"history" = "历史记录";
+"see_all" = "查看全部";
+"ask_anything" = "随便问点什么";

@@ -45,8 +45,8 @@ final class NetworkManager {
     // MARK: - Private Methods
     
     private func createProvider<T: TargetType>() -> MoyaProvider<T> {
-        var plugins: [PluginType] = []
-        
+        var plugins: [PluginType] = [LanguagePlugin()]
+
         #if DEBUG
         plugins.append(CurlLoggerPlugin())
         #endif

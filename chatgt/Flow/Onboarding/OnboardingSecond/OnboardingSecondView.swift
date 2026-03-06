@@ -1,4 +1,5 @@
 import SwiftUI
+import RswiftResources
 
 struct OnboardingSecondView: View {
     var onContinue: () -> Void
@@ -29,25 +30,25 @@ struct OnboardingSecondView: View {
                 HStack(spacing: 4) {
                     FeatureCard(
                         imageName: "icon_onbording_2_1",
-                        title: "Text generation",
-                        description: "Description of this tool\nShort and clear"
+                        title: R.string.onboarding.feature_text(),
+                        description: R.string.onboarding.feature_desc()
                     )
                     FeatureCard(
                         imageName: "icon_onbording_2_2",
-                        title: "Coding Assistant",
-                        description: "Description of this tool\nShort and clear"
+                        title: R.string.onboarding.feature_code(),
+                        description: R.string.onboarding.feature_desc()
                     )
                 }
                 HStack(spacing: 4) {
                     FeatureCard(
                         imageName: "icon_onbording_2_3",
-                        title: "Image Generation",
-                        description: "Description of this tool\nShort and clear"
+                        title: R.string.onboarding.feature_image(),
+                        description: R.string.onboarding.feature_desc()
                     )
                     FeatureCard(
                         imageName: "icon_onbording_2_4",
-                        title: "Work with File",
-                        description: "Description of this tool\nShort and clear"
+                        title: R.string.onboarding.feature_file(),
+                        description: R.string.onboarding.feature_desc()
                     )
                 }
             }
@@ -71,25 +72,25 @@ struct OnboardingSecondView: View {
             Spacer()
                 .frame(height: centerY + offset + 76)
             
-            Text("One AI For All Tasks")
+            Text(R.string.onboarding.title2())
                 .font(.system(size: 28, weight: .semibold))
                 .foregroundColor(.white)
-            
+
             HStack(spacing: 8) {
-                CapsuleButton(title: "Text")
-                CapsuleButton(title: "Code")
-                CapsuleButton(title: "Images")
-                CapsuleButton(title: "Files")
+                CapsuleButton(title: R.string.onboarding.capsule_text())
+                CapsuleButton(title: R.string.onboarding.capsule_code())
+                CapsuleButton(title: R.string.onboarding.capsule_images())
+                CapsuleButton(title: R.string.onboarding.capsule_files())
             }
-            
-            Text("Seamlessly switch between AI modes and styles")
+
+            Text(R.string.onboarding.subtitle2())
                 .font(.system(size: 13))
                 .foregroundColor(Color(hex: 0x707579))
-            
+
             Button(action: {
                 onContinue()
             }) {
-                Text("Continue")
+                Text(R.string.common.continue_button())
                     .font(.system(size: 17, weight: .semibold))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)

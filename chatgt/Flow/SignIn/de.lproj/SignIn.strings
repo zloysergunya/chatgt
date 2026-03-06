@@ -1,0 +1,13 @@
+/* Sign In screen strings */
+
+"title" = "Anmelden bei";
+"subtitle" = "Einmal verbinden. Überall chatten, mit jedem Modell";
+"google" = "Mit Google anmelden";
+"apple" = "Mit Apple anmelden";
+"email" = "Mit E-Mail anmelden";
+"no_account" = "Kein Konto?";
+"signup" = "Registrieren";
+"error_apple_token" = "Apple-Identitätstoken konnte nicht abgerufen werden";
+"error_apple_code" = "Apple-Autorisierungscode konnte nicht abgerufen werden";
+"error_auth_token" = "Authentifizierungstoken konnte nicht abgerufen werden";
+"error_generic" = "Ein Fehler ist aufgetreten";

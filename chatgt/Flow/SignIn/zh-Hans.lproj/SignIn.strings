@@ -1,0 +1,13 @@
+/* Sign In screen strings */
+
+"title" = "登录";
+"subtitle" = "一次连接，随时随地与任意模型对话";
+"google" = "使用 Google 登录";
+"apple" = "使用 Apple 登录";
+"email" = "使用邮箱登录";
+"no_account" = "还没有账号？";
+"signup" = "注册";
+"error_apple_token" = "获取 Apple 身份令牌失败";
+"error_apple_code" = "获取 Apple 授权码失败";
+"error_auth_token" = "获取认证令牌失败";
+"error_generic" = "发生错误";

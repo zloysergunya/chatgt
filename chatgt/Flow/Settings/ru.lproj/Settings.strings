@@ -1,0 +1,13 @@
+/* Settings screen strings */
+
+"title" = "Настройки";
+"login" = "Войти";
+"history" = "История";
+"language" = "Изменить язык";
+"share" = "Поделиться Chat GT";
+"rate" = "Оценить";
+"support" = "Поддержка";
+"privacy" = "Политика конфиденциальности";
+"terms" = "Условия использования";
+"logout" = "Выйти";
+"share_text" = "Попробуйте Chat GT — ИИ-ассистент";

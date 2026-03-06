@@ -1,4 +1,5 @@
 import SwiftUI
+import RswiftResources
 
 struct ChatView: View {
     @State private var inputText: String = ""
@@ -68,7 +69,7 @@ struct ChatView: View {
 
     private var headerSection: some View {
         HStack {
-            Text("Chat GT")
+            Text(R.string.chat.title())
                 .font(.system(size: 28, weight: .bold))
                 .foregroundColor(.white)
 
@@ -101,7 +102,7 @@ struct ChatView: View {
 
     private var aiModelsSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            sectionHeader(title: "AI models", action: { showAllModels = true })
+            sectionHeader(title: R.string.chat.ai_models(), action: { showAllModels = true })
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
@@ -120,7 +121,7 @@ struct ChatView: View {
 
     private var historySection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            sectionHeader(title: "History", action: {})
+            sectionHeader(title: R.string.chat.history(), action: {})
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
@@ -144,7 +145,7 @@ struct ChatView: View {
             Spacer()
 
             Button(action: action) {
-                Text("See All")
+                Text(R.string.chat.see_all())
                     .font(.system(size: 14))
                     .foregroundColor(Color(hex: 0x707579))
             }

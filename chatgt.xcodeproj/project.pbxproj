@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D14C746A2F0D245500AC062F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14C74692F0D245500AC062F /* StoreKit.framework */; };
+		D15EDD422F5AF77500028298 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = D15EDD412F5AF77500028298 /* RswiftLibrary */; };
 		D18DCCD22F239FD800D8F9CA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = D18DCCD12F239FD800D8F9CA /* GoogleSignIn */; };
 		D18DCCD42F239FD800D8F9CA /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D18DCCD32F239FD800D8F9CA /* GoogleSignInSwift */; };
 		D18DCCDD2F23A0F700D8F9CA /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = D18DCCDC2F23A0F700D8F9CA /* Moya */; };
@@ -50,6 +51,7 @@
 				D18DCCDD2F23A0F700D8F9CA /* Moya in Frameworks */,
 				D14C746A2F0D245500AC062F /* StoreKit.framework in Frameworks */,
 				D18DCCD22F239FD800D8F9CA /* GoogleSignIn in Frameworks */,
+				D15EDD422F5AF77500028298 /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +97,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D15EDD452F5AF7C500028298 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				D1287F092EE5F9230092ABBA /* chatgt */,
@@ -105,6 +108,7 @@
 				D18DCCD32F239FD800D8F9CA /* GoogleSignInSwift */,
 				D18DCCDC2F23A0F700D8F9CA /* Moya */,
 				D18DCCDF2F23A12C00D8F9CA /* KeychainAccess */,
+				D15EDD412F5AF77500028298 /* RswiftLibrary */,
 			);
 			productName = chatgt;
 			productReference = D1287F072EE5F9230092ABBA /* chatgt.app */;
@@ -132,40 +136,11 @@
 				en,
 				Base,
 				de,
-				he,
-				ar,
-				el,
 				"zh-Hans",
-				ja,
-				uk,
-				"zh-HK",
-				nb,
-				"en-GB",
 				es,
-				da,
-				it,
-				sk,
-				"fr-CA",
-				ms,
-				cs,
-				ko,
-				"zh-Hant",
-				hu,
-				"en-AU",
-				tr,
-				pl,
 				"pt-BR",
 				ru,
 				fr,
-				fi,
-				id,
-				nl,
-				"pt-PT",
-				ro,
-				hr,
-				hi,
-				ca,
-				"en-IN",
 			);
 			mainGroup = D1287EFE2EE5F9230092ABBA;
 			minimizedProjectReferenceProxies = 1;
@@ -173,6 +148,7 @@
 				D18DCCD02F239FD800D8F9CA /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				D18DCCDB2F23A0F700D8F9CA /* XCRemoteSwiftPackageReference "Moya" */,
 				D18DCCDE2F23A12C00D8F9CA /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				D15EDD402F5AF77500028298 /* XCRemoteSwiftPackageReference "R.swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D1287F082EE5F9230092ABBA /* Products */;
@@ -203,6 +179,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D15EDD452F5AF7C500028298 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = D15EDD442F5AF7C500028298 /* RswiftGenerateInternalResources */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D1287F102EE5F9240092ABBA /* Debug */ = {
@@ -422,6 +405,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D15EDD402F5AF77500028298 /* XCRemoteSwiftPackageReference "R.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.8.0;
+			};
+		};
 		D18DCCD02F239FD800D8F9CA /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -449,6 +440,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D15EDD412F5AF77500028298 /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D15EDD402F5AF77500028298 /* XCRemoteSwiftPackageReference "R.swift" */;
+			productName = RswiftLibrary;
+		};
+		D15EDD442F5AF7C500028298 /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D15EDD402F5AF77500028298 /* XCRemoteSwiftPackageReference "R.swift" */;
+			productName = "plugin:RswiftGenerateInternalResources";
+		};
 		D18DCCD12F239FD800D8F9CA /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D18DCCD02F239FD800D8F9CA /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;

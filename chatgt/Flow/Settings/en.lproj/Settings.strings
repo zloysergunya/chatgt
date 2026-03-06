@@ -1,0 +1,13 @@
+/* Settings screen strings */
+
+"title" = "Settings";
+"login" = "Log In";
+"history" = "History";
+"language" = "Change Language";
+"share" = "Share Chat GT";
+"rate" = "Rate Us";
+"support" = "Ask support";
+"privacy" = "Privacy Policy";
+"terms" = "Terms of Use";
+"logout" = "Log Out";
+"share_text" = "Check out Chat GT - AI Assistant";

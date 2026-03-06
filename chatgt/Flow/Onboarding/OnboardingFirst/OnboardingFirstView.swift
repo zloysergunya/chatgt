@@ -1,4 +1,5 @@
 import SwiftUI
+import RswiftResources
 
 struct OnboardingFirstView: View {
     var animation: Namespace.ID
@@ -71,12 +72,12 @@ struct OnboardingFirstView: View {
             Spacer()
                 .frame(height: centerY + offset + 76)
             
-            Text("Top AI Models in One App")
+            Text(R.string.onboarding.title1())
                 .font(.system(size: 28, weight: .bold))
                 .foregroundColor(.white)
                 .opacity(contentVisible ? 1 : 0)
                 .offset(y: contentVisible ? 0 : 30)
-            
+
             HStack(spacing: 8) {
                 CapsuleButton(title: "Chat GPT")
                 CapsuleButton(title: "DeepSeek")
@@ -84,18 +85,18 @@ struct OnboardingFirstView: View {
             }
             .opacity(contentVisible ? 1 : 0)
             .offset(y: contentVisible ? 0 : 30)
-            
-            Text("Chat GT unites the world's smartest systems")
+
+            Text(R.string.onboarding.subtitle1())
                 .font(.system(size: 15))
                 .foregroundColor(.gray)
                 .opacity(contentVisible ? 1 : 0)
                 .offset(y: contentVisible ? 0 : 30)
-            
+
 
             Button(action: {
                 onContinue()
             }) {
-                Text("Continue")
+                Text(R.string.common.continue_button())
                     .font(.system(size: 17, weight: .semibold))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)

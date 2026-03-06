@@ -1,4 +1,5 @@
 import SwiftUI
+import RswiftResources
 
 struct SignInView: View {
     @Environment(\.dismiss) private var dismiss
@@ -54,15 +55,15 @@ struct SignInView: View {
                 dismiss()
             }
         }
-        .alert("Error", isPresented: $viewModel.showError) {
-            Button("OK", role: .cancel) {}
+        .alert(R.string.common.error(), isPresented: $viewModel.showError) {
+            Button(R.string.common.ok(), role: .cancel) {}
         } message: {
-            Text(viewModel.errorMessage ?? "An error occurred")
+            Text(viewModel.errorMessage ?? R.string.signIn.error_generic())
         }
     }
-    
+
     // MARK: - Header Section
-    
+
     private var headerSection: some View {
         HStack {
             // Close button
@@ -77,11 +78,11 @@ struct SignInView: View {
                     .background(Color.white.opacity(0.2))
                     .clipShape(Circle())
             }
-            
+
             Spacer()
-            
+
             // PRO badge
-            Text("PRO")
+            Text(R.string.common.pro())
                 .font(.system(size: 16, weight: .bold))
                 .foregroundColor(.white)
                 .padding(6)
@@ -96,16 +97,16 @@ struct SignInView: View {
     private var titleSection: some View {
         VStack(spacing: 12) {
             HStack(spacing: 8) {
-                Text("Sign In to")
+                Text(R.string.signIn.title())
                     .font(.system(size: 32, weight: .bold))
                     .foregroundColor(.white)
-                
-                Text("Chat GT")
+
+                Text(R.string.chat.title())
                     .font(.system(size: 32, weight: .bold))
                     .foregroundColor(Color(hex: 0x10B981))
             }
-            
-            Text("Connect once. Chat anywhere, with any model")
+
+            Text(R.string.signIn.subtitle())
                 .font(.system(size: 16))
                 .foregroundColor(Color(hex: 0x9CA3AF))
         }
@@ -118,7 +119,7 @@ struct SignInView: View {
         VStack(spacing: 12) {
             // Google Sign In
             SignInButton(
-                title: "Sign in with Google",
+                title: R.string.signIn.google(),
                 icon: { GoogleIcon() },
                 style: .google,
                 isLoading: viewModel.isLoading
@@ -130,7 +131,7 @@ struct SignInView: View {
             
             // Apple Sign In
             SignInButton(
-                title: "Sign in with Apple",
+                title: R.string.signIn.apple(),
                 icon: {
                     Image(systemName: "apple.logo")
                         .font(.system(size: 20))
@@ -146,7 +147,7 @@ struct SignInView: View {
             
             // Email Sign In
             SignInButton(
-                title: "Sign in with Email",
+                title: R.string.signIn.email(),
                 icon: {
                     Image(systemName: "envelope")
                         .font(.system(size: 18))
@@ -168,14 +169,14 @@ struct SignInView: View {
     
     private var signUpSection: some View {
         HStack(spacing: 4) {
-            Text("Don't have an account?")
+            Text(R.string.signIn.no_account())
                 .font(.system(size: 14))
                 .foregroundColor(Color(hex: 0x9CA3AF))
-            
+
             Button {
                 onSignUpTapped?()
             } label: {
-                Text("Sign Up")
+                Text(R.string.signIn.signup())
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(.white)
             }
